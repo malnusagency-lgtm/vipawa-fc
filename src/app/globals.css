@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-primary: #0a0a0f;
+  --color-primary-800: #12121a;
+  --color-primary-700: #1a1a25;
+
+  --color-accent-blue: #2563eb;
+  --color-accent-blue-glow: #3b82f6;
+  --color-accent-blue-light: #60a5fa;
+
+  --color-accent-red: #dc2626;
+  --color-accent-red-glow: #ef4444;
+  --color-accent-red-light: #f87171;
+
+  --color-gold: #f59e0b;
+  --color-gold-light: #fbbf24;
+
+  /* Fonts */
+  --font-heading: var(--font-outfit), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+
+  /* Shadows */
+  --shadow-glow-blue: 0 0 30px rgba(37, 99, 235, 0.5);
+  --shadow-glow-red: 0 0 30px rgba(220, 38, 38, 0.5);
+  --shadow-glow-gold: 0 0 30px rgba(245, 158, 11, 0.5);
+
+  /* Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-marquee: marquee 25s linear infinite;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .container-custom {
+    @apply max-w-[1280px] mx-auto px-6;
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-blue-glow text-white font-heading font-semibold uppercase tracking-wider rounded-full shadow-glow-blue hover:translate-y-[-2px] hover:shadow-lg transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-heading font-semibold uppercase tracking-wider rounded-full hover:bg-white hover:text-primary transition-all duration-300 backdrop-blur-sm border border-white/10;
+  }
+
+  .section-title {
+    @apply text-5xl md:text-7xl font-black uppercase mb-6;
+  }
+
+  .section-tag {
+    @apply text-accent-blue font-bold tracking-widest uppercase mb-4 block;
+  }
+}
+
+/* Global Reset */
+body {
+  @apply bg-primary text-white font-body selection:bg-accent-blue/30 overflow-x-hidden;
+}
