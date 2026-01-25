@@ -15,6 +15,7 @@ const inter = Inter({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://vipawafc.com"),
   title: "Vipawa Ladies FC | Talent into Power",
   description: "Official website of Vipawa Ladies FC. Nurturing young women through football excellence. Based in Nairobi, Kenya.",
   openGraph: {
@@ -35,12 +36,19 @@ export const metadata = {
   },
 };
 
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
       <body className="antialiased">
         <LenisProvider>
-          {children}
+          <Navbar />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
         </LenisProvider>
       </body>
     </html>
