@@ -71,7 +71,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ${isScrolled || isMenuOpen ? 'bg-primary/95 backdrop-blur-xl border-b border-white/10 py-3' : 'bg-transparent py-5'}`}>
+        <nav className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ${isScrolled || isMenuOpen ? 'bg-primary border-b border-white/10 py-3' : 'bg-transparent py-5'}`}>
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-3 group relative z-[1002]" onClick={() => setIsMenuOpen(false)}>
                     <div className="relative h-10 w-10 md:h-12 md:w-12 transition-transform duration-300 group-hover:scale-110">
@@ -105,7 +105,7 @@ const Navbar = () => {
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden text-white relative z-[1002] p-2 hover:bg-white/10 rounded-full transition-colors"
+                    className="md:hidden text-white relative z-[1100] p-2 hover:bg-white/10 rounded-full transition-colors"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                     aria-label="Toggle Menu"
                 >
@@ -121,7 +121,7 @@ const Navbar = () => {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="fixed inset-0 bg-primary z-[1001] flex flex-col items-center justify-center gap-8 pointer-events-auto"
+                        className="fixed inset-0 bg-primary z-[1050] flex flex-col items-center justify-center gap-8 pointer-events-auto h-screen w-screen"
                     >
                         {navLinks.map((link) => (
                             <motion.div key={link.name} variants={linkVariants}>

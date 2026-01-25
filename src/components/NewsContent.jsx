@@ -10,7 +10,7 @@ const NewsContent = () => {
         <div className="pt-32 pb-20 min-h-screen">
             <div className="container-custom mb-12">
                 <span className="section-tag">Media Center</span>
-                <h1 className="section-title">Latest News</h1>
+                <h1 className="text-4xl md:text-7xl font-black uppercase mb-6">Latest News</h1>
             </div>
 
             <section className="container-custom">

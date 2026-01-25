@@ -30,7 +30,7 @@ const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h1 className="text-7xl md:text-9xl font-black uppercase tracking-tighter leading-[0.8] mb-6">
+                    <h1 className="text-5xl sm:text-7xl md:text-9xl font-black uppercase tracking-tighter leading-[0.9] mb-6">
                         Vipawa <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue via-white to-accent-blue animate-gradient-x">
                             Ladies FC

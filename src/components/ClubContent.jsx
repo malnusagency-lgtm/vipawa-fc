@@ -18,7 +18,7 @@ const HierarchyCard = ({ member, type }) => {
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                     sizes={isLeader ? "160px" : "96px"}
                 />
             </div>
@@ -40,7 +40,7 @@ const PlayerCard = ({ player }) => (
                 src={player.image}
                 alt={player.name}
                 fill
-                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                className="object-cover transition-all duration-500"
                 sizes="(max-width: 768px) 50vw, 200px"
             />
             <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/10">
@@ -60,8 +60,8 @@ const ClubContent = ({ organization }) => {
             <div className="container-custom">
                 <div className="text-center mb-20">
                     <span className="section-tag">Organizational Structure</span>
-                    <h1 className="section-title">The Club</h1>
-                    <p className="text-white/50 max-w-2xl mx-auto">
+                    <h1 className="text-4xl md:text-7xl font-black uppercase mb-6">The Club</h1>
+                    <p className="text-white/50 max-w-2xl mx-auto px-4 text-sm md:text-base">
                         Built on strong leadership and professional management to ensure sustainable success on and off the pitch.
                     </p>
                 </div>

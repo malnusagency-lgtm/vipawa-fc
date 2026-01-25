@@ -61,7 +61,7 @@ const QuickAccess = () => {
                             src="/images/gallery/gallery-5.jpeg"
                             alt="Squad"
                             fill
-                            className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
                             sizes="(max-width: 768px) 100vw, 33vw"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent p-8 flex flex-col justify-end">
@@ -75,7 +75,7 @@ const QuickAccess = () => {
                             src="/images/merchandise/kits-collection.jpeg"
                             alt="Shop"
                             fill
-                            className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
                             sizes="(max-width: 768px) 100vw, 33vw"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent p-8 flex flex-col justify-end">
