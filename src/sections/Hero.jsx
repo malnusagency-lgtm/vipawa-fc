@@ -71,14 +71,14 @@ const Hero = () => {
         <section className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden noise" aria-label="Hero">
             {/* Background */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/70 to-primary/30 z-10" />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/60 to-transparent z-10" />
                 <Image
                     src="/images/gallery/gallery-3.jpeg"
                     alt=""
                     fill
                     priority
-                    className="object-cover opacity-50"
+                    className="object-cover opacity-90"
                     sizes="100vw"
                 />
             </div>
