@@ -17,7 +17,7 @@ const SocialProof = () => {
                     <div className="flex animate-marquee whitespace-nowrap">
                         {[...slogans, ...slogans, ...slogans, ...slogans].map((slogan, i) => (
                             <span key={i} className="flex items-center">
-                                <span className="text-fluid-2xl font-black uppercase text-white/[0.06] px-4 sm:px-6">{slogan}</span>
+                                <span className="text-fluid-2xl font-black uppercase text-gold/30 px-4 sm:px-6">{slogan}</span>
                                 <span className="w-2 h-2 rounded-full bg-gold/30 shrink-0 mx-2" aria-hidden="true" />
                             </span>
                         ))}

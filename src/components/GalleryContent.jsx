@@ -30,7 +30,6 @@ const GalleryContent = () => {
         setSelectedImage(galleryImages[newIdx]);
     }, [selectedImage, visibleCount]);
 
-    // Keyboard navigation
     useEffect(() => {
         if (!selectedImage) return;
         const handleKey = (e) => {
@@ -48,40 +47,49 @@ const GalleryContent = () => {
     return (
         <div className="pt-24 sm:pt-32 pb-16 sm:pb-20 min-h-screen">
             <div className="container-custom">
-                <div className="text-center mb-12 sm:mb-16">
+                <div className="text-center mb-10 sm:mb-14">
                     <span className="section-tag">Photo Gallery</span>
                     <h1 className="section-title">Gallery</h1>
                     <p className="text-white/40 max-w-2xl mx-auto text-fluid-sm">
                         Relive the moments — from match days to community events.
                     </p>
-                    <div className="mt-3 text-fluid-xs text-white/20 uppercase tracking-[0.2em]">
+                    <div className="mt-2 text-fluid-xs text-white/20 uppercase tracking-[0.2em]">
                         {galleryImages.length} Photos
                     </div>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3">
+                {/* Tight, uniform grid — no masonry gaps */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1.5 sm:gap-2">
                     {displayed.map((image, idx) => (
                         <motion.div
                             key={image.id}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: Math.min(idx * 0.02, 0.4) }}
-                            className={`relative cursor-pointer group overflow-hidden rounded-xl bg-white/[0.03] hover:shadow-elevated transition-all duration-500 ${idx % 7 === 0 ? 'row-span-2 aspect-[3/4]' : 'aspect-square'
-                                }`}
+                            transition={{ delay: Math.min(idx * 0.015, 0.3) }}
+                            className="relative cursor-pointer group overflow-hidden rounded-lg bg-surface aspect-square"
                             onClick={() => openLightbox(image)}
                             role="button"
                             tabIndex={0}
                             aria-label={`View photo ${image.id}`}
                             onKeyDown={(e) => e.key === 'Enter' && openLightbox(image)}
                         >
-                            <Image src={image.src} alt={image.alt} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw" loading={idx < 10 ? 'eager' : 'lazy'} />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <Image
+                                src={image.src}
+                                alt={image.alt}
+                                fill
+                                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
+                                loading={idx < 10 ? 'eager' : 'lazy'}
+                            />
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+                                <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-fluid-xs font-bold uppercase tracking-wider">View</span>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
 
                 {visibleCount < galleryImages.length && (
-                    <div className="flex justify-center mt-12">
+                    <div className="flex justify-center mt-10">
                         <button onClick={loadMore} className="btn-secondary">
                             Load More ({galleryImages.length - visibleCount} remaining)
                         </button>
@@ -102,13 +110,13 @@ const GalleryContent = () => {
                         aria-label="Image lightbox"
                         aria-modal="true"
                     >
-                        <button className="absolute top-6 right-6 z-[2010] p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-gold" onClick={closeLightbox} aria-label="Close lightbox">
+                        <button className="absolute top-6 right-6 z-[2010] p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors" onClick={closeLightbox} aria-label="Close lightbox">
                             <X size={24} />
                         </button>
-                        <button className="absolute left-3 sm:left-6 z-[2010] p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-gold" onClick={(e) => { e.stopPropagation(); navigateImage('prev'); }} aria-label="Previous image">
+                        <button className="absolute left-3 sm:left-6 z-[2010] p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors" onClick={(e) => { e.stopPropagation(); navigateImage('prev'); }} aria-label="Previous image">
                             <ChevronLeft size={24} />
                         </button>
-                        <button className="absolute right-3 sm:right-6 z-[2010] p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-gold" onClick={(e) => { e.stopPropagation(); navigateImage('next'); }} aria-label="Next image">
+                        <button className="absolute right-3 sm:right-6 z-[2010] p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors" onClick={(e) => { e.stopPropagation(); navigateImage('next'); }} aria-label="Next image">
                             <ChevronRight size={24} />
                         </button>
                         <motion.div key={selectedImage.id} initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} transition={{ duration: 0.2 }} className="relative w-[90vw] h-[80vh] max-w-5xl" onClick={(e) => e.stopPropagation()}>

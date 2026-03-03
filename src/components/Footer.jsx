@@ -74,9 +74,8 @@ const Footer = () => (
                 </div>
             </div>
 
-            <div className="pt-8 border-t border-white/[0.04] flex flex-col sm:flex-row items-center justify-between gap-3">
-                <p className="text-white/20 text-fluid-xs text-center sm:text-left">© 2026 Vipawa Ladies FC. All rights reserved.</p>
-                <p className="text-white/20 text-fluid-xs flex items-center gap-1">Designed by <span className="text-gold font-bold">Malnus</span></p>
+            <div className="pt-8 border-t border-white/[0.04] flex items-center justify-center">
+                <p className="text-white/20 text-fluid-xs text-center">© 2026 Vipawa Ladies FC. All rights reserved.</p>
             </div>
         </div>
     </footer>
