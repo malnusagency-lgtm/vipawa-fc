@@ -20,6 +20,12 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Close mobile menu on route change
+    useEffect(() => {
+        setIsMenuOpen(false);
+        document.body.style.overflow = 'unset';
+    }, [pathname]);
+
     // Lock body scroll when menu is open
     useEffect(() => {
         if (isMenuOpen) {
@@ -27,6 +33,9 @@ const Navbar = () => {
         } else {
             document.body.style.overflow = 'unset';
         }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
     }, [isMenuOpen]);
 
     const navLinks = [
@@ -39,27 +48,21 @@ const Navbar = () => {
     ];
 
     const menuVariants = {
-        hidden: { opacity: 0, y: '-100%' },
+        hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            y: 0,
             transition: {
-                type: 'tween',
-                ease: 'circOut',
-                duration: 0.5,
+                duration: 0.3,
                 when: "beforeChildren",
-                staggerChildren: 0.1
+                staggerChildren: 0.08
             }
         },
         exit: {
             opacity: 0,
-            y: '-100%',
             transition: {
-                type: 'tween',
-                ease: 'circIn',
-                duration: 0.4,
+                duration: 0.2,
                 when: "afterChildren",
-                staggerChildren: 0.05,
+                staggerChildren: 0.04,
                 staggerDirection: -1
             }
         }
@@ -68,13 +71,13 @@ const Navbar = () => {
     const linkVariants = {
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0 },
-        exit: { opacity: 0, y: 20 }
+        exit: { opacity: 0, y: 10 }
     };
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ${isScrolled || isMenuOpen ? 'bg-primary border-b border-white/10 py-3' : 'bg-transparent py-5'}`}>
-            <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-                <Link href="/" className="flex items-center gap-3 group relative z-[1002]" onClick={() => setIsMenuOpen(false)}>
+        <nav className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ${isScrolled || isMenuOpen ? 'bg-primary/95 backdrop-blur-xl border-b border-white/10 py-3' : 'bg-transparent py-5'}`}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+                <Link href="/" className="flex items-center gap-3 group relative z-[1100]">
                     <div className="relative h-10 w-10 md:h-12 md:w-12 transition-transform duration-300 group-hover:scale-110">
                         <Image
                             src="/images/logo.png"
@@ -82,18 +85,19 @@ const Navbar = () => {
                             fill
                             className="object-contain"
                             sizes="(max-width: 768px) 40px, 48px"
+                            priority
                         />
                     </div>
                     <span className="font-heading font-bold text-lg md:text-xl tracking-tight hidden sm:block">Vipawa Ladies FC</span>
                 </Link>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden lg:flex items-center gap-6 xl:gap-8">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
-                            className={`font-heading text-sm font-medium uppercase tracking-wider hover:text-white relative group transition-colors ${pathname === link.href ? 'text-accent-blue' : 'text-white/70'}`}
+                            className={`font-heading text-xs xl:text-sm font-medium uppercase tracking-wider hover:text-white relative group transition-colors ${pathname === link.href ? 'text-accent-blue' : 'text-white/70'}`}
                         >
                             {link.name}
                             <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-accent-blue to-accent-red transition-all duration-300 ${pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
@@ -106,7 +110,7 @@ const Navbar = () => {
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden text-white relative z-[1100] p-2 hover:bg-white/10 rounded-full transition-colors"
+                    className="lg:hidden text-white relative z-[1100] p-2 hover:bg-white/10 rounded-full transition-colors"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                     aria-label="Toggle Menu"
                 >
@@ -122,14 +126,15 @@ const Navbar = () => {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="fixed inset-0 bg-primary z-[1050] flex flex-col items-center justify-center gap-8 pointer-events-auto h-screen w-screen"
+                        className="fixed inset-0 bg-primary/98 backdrop-blur-2xl z-[1050] flex flex-col items-center justify-center gap-6 pointer-events-auto"
+                        style={{ height: '100dvh', width: '100vw' }}
                     >
                         {navLinks.map((link) => (
                             <motion.div key={link.name} variants={linkVariants}>
                                 <Link
                                     href={link.href}
                                     onClick={() => setIsMenuOpen(false)}
-                                    className={`font-heading text-4xl font-black uppercase tracking-widest hover:text-accent-blue transition-colors ${pathname === link.href ? 'text-accent-blue' : 'text-white'}`}
+                                    className={`font-heading text-3xl sm:text-4xl font-black uppercase tracking-widest hover:text-accent-blue transition-colors block text-center ${pathname === link.href ? 'text-accent-blue' : 'text-white'}`}
                                 >
                                     {link.name}
                                 </Link>
@@ -139,7 +144,7 @@ const Navbar = () => {
                             <Link
                                 href="/support"
                                 onClick={() => setIsMenuOpen(false)}
-                                className="mt-8 px-12 py-4 bg-accent-blue text-white font-bold uppercase tracking-widest rounded-full shadow-glow-blue inline-block"
+                                className="mt-6 px-12 py-4 bg-accent-blue text-white font-bold uppercase tracking-widest rounded-full shadow-glow-blue inline-block"
                             >
                                 Join Us
                             </Link>
