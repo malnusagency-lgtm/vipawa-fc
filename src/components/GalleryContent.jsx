@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -24,78 +24,72 @@ const GalleryContent = () => {
         if (!selectedImage) return;
         const currentIdx = galleryImages.findIndex(img => img.id === selectedImage.id);
         const maxIdx = Math.min(visibleCount, galleryImages.length) - 1;
-        let newIdx;
-        if (direction === 'next') {
-            newIdx = currentIdx >= maxIdx ? 0 : currentIdx + 1;
-        } else {
-            newIdx = currentIdx <= 0 ? maxIdx : currentIdx - 1;
-        }
+        const newIdx = direction === 'next'
+            ? (currentIdx >= maxIdx ? 0 : currentIdx + 1)
+            : (currentIdx <= 0 ? maxIdx : currentIdx - 1);
         setSelectedImage(galleryImages[newIdx]);
     }, [selectedImage, visibleCount]);
 
-    const loadMore = () => {
-        setVisibleCount(prev => Math.min(prev + 24, galleryImages.length));
-    };
+    // Keyboard navigation
+    useEffect(() => {
+        if (!selectedImage) return;
+        const handleKey = (e) => {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') navigateImage('next');
+            if (e.key === 'ArrowLeft') navigateImage('prev');
+        };
+        window.addEventListener('keydown', handleKey);
+        return () => window.removeEventListener('keydown', handleKey);
+    }, [selectedImage, closeLightbox, navigateImage]);
 
+    const loadMore = () => setVisibleCount(prev => Math.min(prev + 24, galleryImages.length));
     const displayed = galleryImages.slice(0, visibleCount);
 
     return (
-        <div className="pt-32 pb-20 min-h-screen">
+        <div className="pt-24 sm:pt-32 pb-16 sm:pb-20 min-h-screen">
             <div className="container-custom">
-                {/* Header */}
-                <div className="text-center mb-16">
+                <div className="text-center mb-12 sm:mb-16">
                     <span className="section-tag">Photo Gallery</span>
-                    <h1 className="text-4xl md:text-7xl font-black uppercase mb-6">Gallery</h1>
-                    <p className="text-white/50 max-w-2xl mx-auto px-4 text-sm md:text-base">
-                        Relive the moments — from match days to community events. The heart of Vipawa captured in pictures.
+                    <h1 className="section-title">Gallery</h1>
+                    <p className="text-white/40 max-w-2xl mx-auto text-fluid-sm">
+                        Relive the moments — from match days to community events.
                     </p>
-                    <div className="mt-4 text-xs text-white/30 uppercase tracking-widest">
+                    <div className="mt-3 text-fluid-xs text-white/20 uppercase tracking-[0.2em]">
                         {galleryImages.length} Photos
                     </div>
                 </div>
 
-                {/* Gallery Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3">
                     {displayed.map((image, idx) => (
                         <motion.div
                             key={image.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: Math.min(idx * 0.03, 0.5) }}
-                            className={`relative cursor-pointer group overflow-hidden rounded-xl bg-white/5 ${idx % 7 === 0 ? 'row-span-2 aspect-[3/4]' : 'aspect-square'
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: Math.min(idx * 0.02, 0.4) }}
+                            className={`relative cursor-pointer group overflow-hidden rounded-xl bg-white/[0.03] hover:shadow-elevated transition-all duration-500 ${idx % 7 === 0 ? 'row-span-2 aspect-[3/4]' : 'aspect-square'
                                 }`}
                             onClick={() => openLightbox(image)}
+                            role="button"
+                            tabIndex={0}
+                            aria-label={`View photo ${image.id}`}
+                            onKeyDown={(e) => e.key === 'Enter' && openLightbox(image)}
                         >
-                            <Image
-                                src={image.src}
-                                alt={image.alt}
-                                fill
-                                className="object-cover transition-all duration-500 group-hover:scale-110"
-                                sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
-                                loading={idx < 10 ? 'eager' : 'lazy'}
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                            <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <span className="text-xs font-bold uppercase tracking-widest text-white/70">#{image.id}</span>
-                            </div>
+                            <Image src={image.src} alt={image.alt} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw" loading={idx < 10 ? 'eager' : 'lazy'} />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </motion.div>
                     ))}
                 </div>
 
-                {/* Load More */}
                 {visibleCount < galleryImages.length && (
                     <div className="flex justify-center mt-12">
-                        <button
-                            onClick={loadMore}
-                            className="px-10 py-4 bg-white/5 hover:bg-accent-blue/20 border border-white/10 hover:border-accent-blue/50 rounded-full font-bold uppercase text-sm tracking-widest transition-all duration-300"
-                        >
+                        <button onClick={loadMore} className="btn-secondary">
                             Load More ({galleryImages.length - visibleCount} remaining)
                         </button>
                     </div>
                 )}
             </div>
 
-            {/* Lightbox Overlay */}
+            {/* Lightbox */}
             <AnimatePresence>
                 {selectedImage && (
                     <motion.div
@@ -104,51 +98,23 @@ const GalleryContent = () => {
                         exit={{ opacity: 0 }}
                         className="fixed inset-0 bg-black/95 z-[2000] flex items-center justify-center"
                         onClick={closeLightbox}
+                        role="dialog"
+                        aria-label="Image lightbox"
+                        aria-modal="true"
                     >
-                        {/* Close Button */}
-                        <button
-                            className="absolute top-6 right-6 z-[2010] p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
-                            onClick={closeLightbox}
-                        >
+                        <button className="absolute top-6 right-6 z-[2010] p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-gold" onClick={closeLightbox} aria-label="Close lightbox">
                             <X size={24} />
                         </button>
-
-                        {/* Nav Buttons */}
-                        <button
-                            className="absolute left-4 md:left-8 z-[2010] p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
-                            onClick={(e) => { e.stopPropagation(); navigateImage('prev'); }}
-                        >
-                            <ChevronLeft size={28} />
+                        <button className="absolute left-3 sm:left-6 z-[2010] p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-gold" onClick={(e) => { e.stopPropagation(); navigateImage('prev'); }} aria-label="Previous image">
+                            <ChevronLeft size={24} />
                         </button>
-                        <button
-                            className="absolute right-4 md:right-8 z-[2010] p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
-                            onClick={(e) => { e.stopPropagation(); navigateImage('next'); }}
-                        >
-                            <ChevronRight size={28} />
+                        <button className="absolute right-3 sm:right-6 z-[2010] p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-gold" onClick={(e) => { e.stopPropagation(); navigateImage('next'); }} aria-label="Next image">
+                            <ChevronRight size={24} />
                         </button>
-
-                        {/* Image */}
-                        <motion.div
-                            key={selectedImage.id}
-                            initial={{ scale: 0.9, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0.9, opacity: 0 }}
-                            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                            className="relative w-[90vw] h-[80vh] max-w-5xl"
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            <Image
-                                src={selectedImage.src}
-                                alt={selectedImage.alt}
-                                fill
-                                className="object-contain"
-                                sizes="90vw"
-                                priority
-                            />
+                        <motion.div key={selectedImage.id} initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} transition={{ duration: 0.2 }} className="relative w-[90vw] h-[80vh] max-w-5xl" onClick={(e) => e.stopPropagation()}>
+                            <Image src={selectedImage.src} alt={selectedImage.alt} fill className="object-contain" sizes="90vw" priority />
                         </motion.div>
-
-                        {/* Image Counter */}
-                        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/50 text-sm font-bold uppercase tracking-widest">
+                        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 text-fluid-xs font-bold uppercase tracking-[0.2em]">
                             {selectedImage.id} / {galleryImages.length}
                         </div>
                     </motion.div>

@@ -1,6 +1,9 @@
 import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -36,16 +39,17 @@ export const metadata = {
   },
 };
 
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
       <body className="antialiased">
         <LenisProvider>
+          <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[3000] focus:bg-gold focus:text-primary focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold">
+            Skip to content
+          </a>
+          <ScrollProgress />
           <Navbar />
-          <main className="flex-grow">
+          <main id="main-content" className="flex-grow">
             {children}
           </main>
           <Footer />

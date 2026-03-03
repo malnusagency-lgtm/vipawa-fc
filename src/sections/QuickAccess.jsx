@@ -1,98 +1,68 @@
 'use client';
 
-import { useLayoutEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Ticket } from 'lucide-react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Ticket, Users, Trophy } from 'lucide-react';
 
 const QuickAccess = () => {
-    const sectionRef = useRef(null);
-    const titleRef = useRef(null);
-    const cardsRef = useRef(null);
-
-    useLayoutEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-        const ctx = gsap.context(() => {
-            // Animate Title
-            gsap.from(titleRef.current, {
-                scrollTrigger: {
-                    trigger: titleRef.current,
-                    start: "top 80%",
-                },
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                ease: "power3.out"
-            });
-
-            // Animate Cards Stagger
-            const cards = cardsRef.current.children;
-            gsap.from(cards, {
-                scrollTrigger: {
-                    trigger: cardsRef.current,
-                    start: "top 75%",
-                },
-                y: 100,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.2,
-                ease: "back.out(1.7)"
-            });
-
-        }, sectionRef);
-
-        return () => ctx.revert();
-    }, []);
+    const cards = [
+        { href: '/club', image: '/images/gallery/gallery-5.jpeg', icon: Users, title: 'The Squad', desc: 'Meet the 2026 First Team' },
+        { href: '/kits', image: '/images/merchandise/kits-collection.jpeg', icon: Trophy, title: 'New Kits', desc: 'Shop the 25/26 Collection' },
+        { href: '/support', image: null, icon: Ticket, title: 'Join Us', desc: 'Become a Member' },
+    ];
 
     return (
-        <section ref={sectionRef} className="py-20">
+        <section className="section-padding">
             <div className="container-custom">
-                {/* Title (Optional, added for reveal demo) */}
-                <div ref={titleRef} className="mb-12 text-center">
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="mb-12 text-center"
+                >
                     <span className="section-tag">Explore</span>
                     <h2 className="section-title">Club Hub</h2>
-                </div>
+                </motion.div>
 
-                <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <Link href="/club" className="group relative overflow-hidden rounded-3xl aspect-[4/3]">
-                        <Image
-                            src="/images/gallery/gallery-5.jpeg"
-                            alt="Squad"
-                            fill
-                            className="object-cover transition-transform duration-700 group-hover:scale-110"
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent p-8 flex flex-col justify-end">
-                            <h3 className="text-3xl font-black uppercase mb-2">The Squad</h3>
-                            <p className="text-white/60 text-sm">Meet the 2026 First Team</p>
-                        </div>
-                    </Link>
-
-                    <Link href="/matches" className="group relative overflow-hidden rounded-3xl aspect-[4/3]">
-                        <Image
-                            src="/images/merchandise/kits-collection.jpeg"
-                            alt="Shop"
-                            fill
-                            className="object-cover transition-transform duration-700 group-hover:scale-110"
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent p-8 flex flex-col justify-end">
-                            <h3 className="text-3xl font-black uppercase mb-2">New Kits</h3>
-                            <p className="text-white/60 text-sm">Shop the 25/26 Collection</p>
-                        </div>
-                    </Link>
-
-                    <Link href="/support" className="group relative overflow-hidden rounded-3xl aspect-[4/3] bg-accent-blue/10 border border-white/5 flex items-center justify-center">
-                        <div className="text-center">
-                            <div className="w-16 h-16 rounded-full bg-accent-blue flex items-center justify-center mx-auto mb-6 shadow-glow-blue group-hover:scale-110 transition-transform">
-                                <Ticket size={24} />
-                            </div>
-                            <h3 className="text-3xl font-black uppercase mb-2">Join Us</h3>
-                            <p className="text-white/60 text-sm">Become a Member</p>
-                        </div>
-                    </Link>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {cards.map((card, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 60 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                        >
+                            <Link
+                                href={card.href}
+                                className={`group relative overflow-hidden rounded-2xl transition-all duration-500 hover:translate-y-[-4px] hover:shadow-elevated block ${card.image ? 'aspect-[4/3]' : 'aspect-[4/3] bg-gradient-to-br from-gold/10 to-transparent border border-white/[0.06] flex items-center justify-center'
+                                    }`}
+                            >
+                                {card.image ? (
+                                    <>
+                                        <Image src={card.image} alt={card.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/90 transition-all duration-500 p-6 sm:p-8 flex flex-col justify-end">
+                                            <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center mb-3 group-hover:bg-gold/30 transition-colors">
+                                                <card.icon size={18} className="text-gold" />
+                                            </div>
+                                            <h3 className="text-fluid-2xl font-black uppercase mb-1">{card.title}</h3>
+                                            <p className="text-white/60 text-fluid-sm">{card.desc}</p>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="text-center p-8 relative z-10">
+                                        <div className="w-16 h-16 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:bg-gold/30 group-hover:shadow-glow-gold transition-all duration-500">
+                                            <card.icon size={24} className="text-gold" />
+                                        </div>
+                                        <h3 className="text-fluid-2xl font-black uppercase mb-1">{card.title}</h3>
+                                        <p className="text-white/50 text-fluid-sm">{card.desc}</p>
+                                    </div>
+                                )}
+                            </Link>
+                        </motion.div>
+                    ))}
                 </div>
             </div>
         </section>

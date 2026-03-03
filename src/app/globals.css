@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors */
-  --color-primary: #0a0a0f;
-  --color-primary-800: #12121a;
-  --color-primary-700: #1a1a25;
+  /* ─── Premium Color Palette ─── */
+  --color-primary: #070b14;
+  --color-primary-900: #0c1220;
+  --color-primary-800: #111827;
+  --color-primary-700: #1a2236;
 
   --color-accent-blue: #2563eb;
   --color-accent-blue-glow: #3b82f6;
@@ -14,22 +15,28 @@
   --color-accent-red-glow: #ef4444;
   --color-accent-red-light: #f87171;
 
-  --color-gold: #f59e0b;
-  --color-gold-light: #fbbf24;
+  --color-gold: #c9a84c;
+  --color-gold-light: #dfc06e;
+  --color-gold-dark: #a68a2e;
 
-  /* Fonts */
+  --color-surface: #0f1521;
+  --color-surface-light: #161e2e;
+
+  /* ─── Fonts ─── */
   --font-heading: var(--font-outfit), sans-serif;
   --font-body: var(--font-inter), sans-serif;
 
-  /* Shadows */
-  --shadow-glow-blue: 0 0 30px rgba(37, 99, 235, 0.5);
-  --shadow-glow-red: 0 0 30px rgba(220, 38, 38, 0.5);
-  --shadow-glow-gold: 0 0 30px rgba(245, 158, 11, 0.5);
+  /* ─── Layered Shadows ─── */
+  --shadow-glass: 0 4px 30px rgba(0, 0, 0, 0.3);
+  --shadow-elevated: 0 8px 32px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-glow-blue: 0 0 40px rgba(37, 99, 235, 0.4);
+  --shadow-glow-red: 0 0 40px rgba(220, 38, 38, 0.4);
+  --shadow-glow-gold: 0 0 40px rgba(201, 168, 76, 0.4);
 
-  /* Animations */
+  /* ─── Animations ─── */
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-marquee: marquee 25s linear infinite;
+  --animate-marquee: marquee 30s linear infinite;
 
   @keyframes float {
 
@@ -49,19 +56,33 @@
     }
 
     100% {
-      transform: translateX(-100%);
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
     }
   }
 }
 
-/* Custom Utilities */
+/* ─── Custom Utilities ─── */
 @layer utilities {
   .container-custom {
-    @apply max-w-[1280px] mx-auto px-6;
+    @apply max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8;
   }
 
   .glass-card {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-2xl shadow-glass;
+  }
+
+  .glass-card-elevated {
+    @apply bg-white/[0.06] backdrop-blur-xl border border-white/[0.1] rounded-2xl shadow-elevated;
   }
 
   .btn-primary {
@@ -72,16 +93,126 @@
     @apply inline-flex items-center justify-center px-8 py-4 bg-white/10 text-white font-heading font-semibold uppercase tracking-wider rounded-full hover:bg-white hover:text-primary transition-all duration-300 backdrop-blur-sm border border-white/10;
   }
 
-  .section-title {
-    @apply text-5xl md:text-7xl font-black uppercase mb-6;
+  .btn-gold {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-gold-dark via-gold to-gold-light text-primary font-heading font-bold uppercase tracking-wider rounded-full shadow-glow-gold hover:translate-y-[-2px] hover:shadow-lg transition-all duration-300;
   }
 
   .section-tag {
-    @apply text-accent-blue font-bold tracking-widest uppercase mb-4 block;
+    @apply text-gold font-bold tracking-[0.2em] uppercase mb-4 block;
+    font-size: clamp(0.625rem, 0.55rem + 0.25vw, 0.75rem);
   }
 }
 
-/* Global Reset */
+/* ─── Fluid Typography (outside @layer for TW4 compat) ─── */
+.text-fluid-xs {
+  font-size: clamp(0.625rem, 0.55rem + 0.25vw, 0.75rem);
+}
+
+.text-fluid-sm {
+  font-size: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+}
+
+.text-fluid-base {
+  font-size: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+}
+
+.text-fluid-lg {
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+}
+
+.text-fluid-xl {
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+}
+
+.text-fluid-2xl {
+  font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
+}
+
+.text-fluid-3xl {
+  font-size: clamp(1.875rem, 1.4rem + 2vw, 3rem);
+}
+
+.text-fluid-4xl {
+  font-size: clamp(2.25rem, 1.5rem + 3vw, 4.5rem);
+}
+
+.text-fluid-hero {
+  font-size: clamp(2.5rem, 1.5rem + 5vw, 7rem);
+}
+
+.section-title {
+  font-size: clamp(2rem, 1.2rem + 3.5vw, 4.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  line-height: 0.95;
+}
+
+.section-padding {
+  padding-top: clamp(3rem, 2rem + 5vw, 6rem);
+  padding-bottom: clamp(3rem, 2rem + 5vw, 6rem);
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(to right, #c9a84c, #2563eb, #c9a84c);
+  z-index: 2000;
+  transform-origin: left;
+}
+
+/* ─── Global Base ─── */
 body {
-  @apply bg-primary text-white font-body selection:bg-accent-blue/30 overflow-x-hidden;
+  @apply bg-primary text-white font-body overflow-x-hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(201, 168, 76, 0.3);
+  color: white;
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 168, 76, 0.5);
+}
+
+/* ─── Noise Texture ─── */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
 }
