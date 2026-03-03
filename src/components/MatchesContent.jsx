@@ -1,12 +1,20 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Calendar, MapPin, Trophy, ArrowRight } from 'lucide-react';
-import { matches, standings } from '@/data/clubData';
+import { Calendar, MapPin, Trophy } from 'lucide-react';
+import { matches, standings, fixtures } from '@/data/clubData';
 
 const MatchesContent = () => {
     const upcoming = matches.find(m => m.type === 'upcoming');
     const recent = matches.filter(m => m.type === 'recent');
+
+    // Determine which fixtures are past based on current date
+    const today = new Date();
+    const isPast = (dateStr) => {
+        const parts = dateStr.split('/');
+        const d = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
+        return d < today;
+    };
 
     return (
         <div className="pt-24 pb-20 min-h-screen">
@@ -182,6 +190,64 @@ const MatchesContent = () => {
                         </motion.div>
 
                     </div>
+                </div>
+            </section>
+
+            {/* Full Season Fixtures */}
+            <section className="section pt-20">
+                <div className="container-custom">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <div className="text-center mb-12">
+                            <span className="section-tag">Season Schedule</span>
+                            <h2 className="section-title">2025/26 Fixtures</h2>
+                        </div>
+
+                        <div className="glass-card overflow-hidden overflow-x-auto">
+                            <table className="w-full text-left text-sm min-w-[600px]">
+                                <thead>
+                                    <tr className="bg-white/5 font-heading font-bold uppercase tracking-widest text-[10px]">
+                                        <th className="p-4 text-center">MW</th>
+                                        <th className="p-4">DATE</th>
+                                        <th className="p-4">DAY</th>
+                                        <th className="p-4">TIME</th>
+                                        <th className="p-4">VENUE</th>
+                                        <th className="p-4">OPPONENT</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-white/5">
+                                    {fixtures.map((fix, idx) => {
+                                        const past = isPast(fix.date);
+                                        return (
+                                            <tr
+                                                key={idx}
+                                                className={`transition-colors hover:bg-white/5 ${past ? 'text-white/40' : 'text-white'}`}
+                                            >
+                                                <td className="p-4 text-center font-bold">{fix.no}</td>
+                                                <td className="p-4 font-mono text-xs">{fix.date}</td>
+                                                <td className="p-4">{fix.day}</td>
+                                                <td className="p-4">
+                                                    <span className={`px-2 py-1 rounded text-xs font-bold ${past ? 'bg-white/5' : 'bg-accent-blue/20 text-accent-blue-light'}`}>
+                                                        {fix.time}
+                                                    </span>
+                                                </td>
+                                                <td className="p-4">{fix.venue}</td>
+                                                <td className="p-4 font-bold uppercase">{fix.opponent}</td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div className="mt-6 flex items-center gap-6 text-[10px] text-white/30 font-bold uppercase tracking-widest justify-center">
+                            <span className="flex items-center gap-2"><span className="w-3 h-0.5 bg-white/20" /> Past</span>
+                            <span className="flex items-center gap-2"><span className="w-3 h-0.5 bg-accent-blue" /> Upcoming</span>
+                        </div>
+                    </motion.div>
                 </div>
             </section>
         </div>

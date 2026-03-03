@@ -48,7 +48,7 @@ const PlayerCard = ({ player }) => (
             </div>
         </div>
         <div className="p-4 text-center">
-            <h3 className="font-bold uppercase mb-1">{player.name}</h3>
+            <h3 className="font-bold uppercase mb-1 text-sm">{player.name}</h3>
             <div className="inline-block px-2 py-1 bg-white/5 rounded text-[10px] font-bold uppercase tracking-widest text-white/50">{player.position}</div>
         </div>
     </motion.div>
@@ -77,19 +77,30 @@ const ClubContent = ({ organization }) => {
                     </div>
                 </section>
 
-                {/* Management & Technical - Tree View */}
+                {/* Management, Communication & Technical */}
                 <section className="mb-24">
-                    <h2 className="text-2xl font-bold uppercase text-center mb-12">Technical Staff</h2>
-                    <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                    <h2 className="text-2xl font-bold uppercase text-center mb-12">Technical Staff & Management</h2>
+                    <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+                        {/* Management */}
                         <div className="space-y-6">
                             <h3 className="text-sm font-bold uppercase tracking-widest text-white/30 text-center border-b border-white/5 pb-4">Management</h3>
                             {organization.management.map((member, idx) => (
                                 <HierarchyCard key={idx} member={member} />
                             ))}
                         </div>
+
+                        {/* Communication */}
+                        <div className="space-y-6">
+                            <h3 className="text-sm font-bold uppercase tracking-widest text-white/30 text-center border-b border-white/5 pb-4">Communication</h3>
+                            {organization.communication && organization.communication.map((member, idx) => (
+                                <HierarchyCard key={idx} member={member} />
+                            ))}
+                        </div>
+
+                        {/* Coaching */}
                         <div className="space-y-6">
                             <h3 className="text-sm font-bold uppercase tracking-widest text-white/30 text-center border-b border-white/5 pb-4">Coaching</h3>
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="space-y-4">
                                 {organization.technical.map((member, idx) => (
                                     <HierarchyCard key={idx} member={member} />
                                 ))}
@@ -111,7 +122,7 @@ const ClubContent = ({ organization }) => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
                         {organization.squad.map((player) => (
                             <PlayerCard key={player.id} player={player} />
                         ))}

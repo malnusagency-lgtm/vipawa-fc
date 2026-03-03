@@ -34,6 +34,7 @@ const Navbar = () => {
         { name: 'The Club', href: '/club' },
         { name: 'Matches', href: '/matches' },
         { name: 'News', href: '/news' },
+        { name: 'Gallery', href: '/gallery' },
         { name: 'Support', href: '/support' },
     ];
 
