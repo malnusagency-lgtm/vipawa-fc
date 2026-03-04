@@ -80,7 +80,7 @@ export const organization = {
         { name: 'Humprey Aluanga', role: 'Brand Ambassador', image: '/images/gallery/gallery-2.jpeg' },
     ],
     management: [
-        { name: 'Mark Ondieki', role: 'Technical Director', image: '/images/gallery/gallery-3.jpeg' },
+        { name: 'Mark Ondiek', role: 'Technical Director', image: '/images/gallery/gallery-3.jpeg' },
     ],
     communication: [
         { name: 'Dennis Ayekha', role: 'Communication', image: '/images/gallery/gallery-4.jpeg' },

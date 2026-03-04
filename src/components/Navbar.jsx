@@ -42,8 +42,8 @@ const Navbar = () => {
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ${isScrolled || isMenuOpen
-                    ? 'bg-primary/90 backdrop-blur-2xl border-b border-white/[0.06] py-3'
-                    : 'bg-transparent py-5'
+                ? 'bg-primary/90 backdrop-blur-2xl border-b border-white/[0.06] py-3'
+                : 'bg-transparent py-5'
                 }`}
             role="navigation"
             aria-label="Main navigation"
@@ -51,8 +51,8 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-3 group relative z-[1100]" aria-label="Vipawa Ladies FC Home">
-                    <div className="relative h-10 w-10 md:h-11 md:w-11 transition-transform duration-300 group-hover:scale-110">
-                        <Image src="/images/logo.png" alt="" fill className="object-contain" sizes="44px" priority />
+                    <div className="relative h-12 w-12 md:h-14 md:w-14 transition-transform duration-300 group-hover:scale-110">
+                        <Image src="/images/vipawa-logo.jpg" alt="Vipawa Ladies FC Logo" fill className="object-contain rounded-full" sizes="56px" priority />
                     </div>
                     <span className="font-heading font-bold text-lg tracking-tight hidden sm:block">Vipawa Ladies FC</span>
                 </Link>
@@ -64,8 +64,8 @@ const Navbar = () => {
                             key={link.name}
                             href={link.href}
                             className={`relative px-4 py-2 font-heading text-xs font-semibold uppercase tracking-wider transition-colors rounded-full ${pathname === link.href
-                                    ? 'text-gold'
-                                    : 'text-white/60 hover:text-white hover:bg-white/[0.04]'
+                                ? 'text-gold'
+                                : 'text-white/60 hover:text-white hover:bg-white/[0.04]'
                                 }`}
                         >
                             {link.name}

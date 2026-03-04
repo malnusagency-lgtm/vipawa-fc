@@ -67,7 +67,8 @@ const ClubContent = ({ organization }) => {
                 {/* Management, Communication & Technical */}
                 <section className="mb-16 sm:mb-24" aria-labelledby="staff-heading">
                     <h2 id="staff-heading" className="text-fluid-xl font-bold uppercase text-center mb-8 sm:mb-12">Technical Staff & Management</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto mb-10">
                         <div className="space-y-4">
                             <h3 className="text-fluid-xs font-bold uppercase tracking-[0.2em] text-white/30 text-center border-b border-white/[0.06] pb-4">Management</h3>
                             {organization.management.map((m, i) => <HierarchyCard key={i} member={m} />)}
@@ -76,11 +77,12 @@ const ClubContent = ({ organization }) => {
                             <h3 className="text-fluid-xs font-bold uppercase tracking-[0.2em] text-white/30 text-center border-b border-white/[0.06] pb-4">Communication</h3>
                             {organization.communication?.map((m, i) => <HierarchyCard key={i} member={m} />)}
                         </div>
-                        <div className="space-y-4 sm:col-span-2 lg:col-span-1">
-                            <h3 className="text-fluid-xs font-bold uppercase tracking-[0.2em] text-white/30 text-center border-b border-white/[0.06] pb-4">Coaching</h3>
-                            <div className="space-y-4">
-                                {organization.technical.map((m, i) => <HierarchyCard key={i} member={m} />)}
-                            </div>
+                    </div>
+
+                    <div className="max-w-5xl mx-auto">
+                        <h3 className="text-fluid-xs font-bold uppercase tracking-[0.2em] text-white/30 text-center border-b border-white/[0.06] pb-4 mb-6">Coaching</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+                            {organization.technical.map((m, i) => <HierarchyCard key={i} member={m} />)}
                         </div>
                     </div>
                 </section>
