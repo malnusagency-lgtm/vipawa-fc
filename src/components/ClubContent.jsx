@@ -21,27 +21,44 @@ const HierarchyCard = ({ member, type }) => {
     );
 };
 
-const PlayerCard = ({ player }) => (
+const PlayerGalleryCard = ({ player }) => (
     <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="group relative bg-white/[0.03] rounded-xl overflow-hidden hover:bg-white/[0.06] hover:translate-y-[-4px] hover:shadow-elevated transition-all duration-500"
+        className="group relative rounded-2xl overflow-hidden bg-surface hover:shadow-elevated transition-all duration-500"
     >
-        <div className="aspect-square relative">
-            <Image src={player.image} alt={player.name} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 640px) 45vw, (max-width: 768px) 33vw, 180px" />
-            <div className="absolute top-2 right-2 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center border border-white/10 group-hover:border-gold/30 transition-colors">
-                <span className="font-heading font-black text-[10px] sm:text-xs">{player.number}</span>
+        {/* Image — taller aspect ratio for gallery feel */}
+        <div className="aspect-[3/4] relative">
+            <Image
+                src={player.image}
+                alt={player.name}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                sizes="(max-width: 640px) 45vw, (max-width: 768px) 30vw, (max-width: 1024px) 22vw, 200px"
+            />
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+
+            {/* Jersey number badge */}
+            <div className="absolute top-3 right-3 w-9 h-9 rounded-full bg-gold/90 text-primary flex items-center justify-center font-heading font-black text-sm shadow-lg">
+                {player.number}
             </div>
-        </div>
-        <div className="p-3 sm:p-4 text-center">
-            <h3 className="font-bold uppercase mb-1 text-fluid-xs">{player.name}</h3>
-            <div className="inline-block px-2 py-0.5 bg-gold/10 rounded text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.15em] text-gold/70">{player.position}</div>
+
+            {/* Player info overlay at bottom */}
+            <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
+                <h3 className="font-black uppercase text-sm sm:text-base leading-tight mb-1 drop-shadow-lg">{player.name}</h3>
+                <span className="inline-block px-2.5 py-1 bg-gold/20 backdrop-blur-sm rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] text-gold border border-gold/20">
+                    {player.position === 'GK' ? 'Goalkeeper' : player.position === 'DEF' ? 'Defender' : player.position === 'MID' ? 'Midfielder' : 'Forward'}
+                </span>
+            </div>
         </div>
     </motion.div>
 );
 
 const ClubContent = ({ organization }) => {
+    const posNames = { GK: 'Goalkeepers', DEF: 'Defenders', MID: 'Midfielders', FWD: 'Forwards' };
+
     return (
         <div className="pt-24 sm:pt-32 pb-16 sm:pb-20 min-h-screen">
             <div className="container-custom">
@@ -87,7 +104,7 @@ const ClubContent = ({ organization }) => {
                     </div>
                 </section>
 
-                {/* The Squad */}
+                {/* The Squad — Gallery Format */}
                 <section aria-labelledby="squad-heading">
                     <div className="flex items-end justify-between mb-8 sm:mb-12 border-b border-white/[0.06] pb-4 sm:pb-6">
                         <div>
@@ -99,15 +116,18 @@ const ClubContent = ({ organization }) => {
                             <div className="text-fluid-xs uppercase tracking-[0.2em] text-white/30">Season</div>
                         </div>
                     </div>
+
                     {['GK', 'DEF', 'MID', 'FWD'].map((pos) => {
-                        const posNames = { GK: 'Goalkeepers', DEF: 'Defenders', MID: 'Midfielders', FWD: 'Forwards' };
                         const players = organization.squad.filter(p => p.position === pos);
                         if (!players.length) return null;
                         return (
-                            <div key={pos} className="mb-10">
-                                <h3 className="text-fluid-xs font-bold uppercase tracking-[0.2em] text-gold/60 mb-4 border-b border-white/[0.04] pb-3">{posNames[pos]}</h3>
-                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
-                                    {players.map(player => <PlayerCard key={player.id} player={player} />)}
+                            <div key={pos} className="mb-12">
+                                <h3 className="text-fluid-sm font-bold uppercase tracking-[0.2em] text-gold mb-5 flex items-center gap-3">
+                                    <span className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold text-xs font-black">{players.length}</span>
+                                    {posNames[pos]}
+                                </h3>
+                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+                                    {players.map(player => <PlayerGalleryCard key={player.id} player={player} />)}
                                 </div>
                             </div>
                         );

@@ -54,7 +54,6 @@ const Navbar = () => {
                     <div className="relative h-12 w-12 md:h-14 md:w-14 transition-transform duration-300 group-hover:scale-110">
                         <Image src="/images/vipawa-logo.jpg" alt="Vipawa Ladies CF Logo" fill className="object-contain rounded-full" sizes="56px" priority />
                     </div>
-                    <span className="font-heading font-bold text-lg tracking-tight hidden sm:block">Vipawa Ladies CF</span>
                 </Link>
 
                 {/* Desktop Menu */}
