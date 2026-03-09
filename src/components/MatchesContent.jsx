@@ -88,7 +88,7 @@ const MatchesContent = () => {
                                     <thead><tr className="bg-white/[0.04] font-heading font-bold uppercase tracking-wider text-[10px]"><th className="p-3 sm:p-4">POS</th><th className="p-3 sm:p-4">TEAM</th><th className="p-3 sm:p-4 text-center">P</th><th className="p-3 sm:p-4 text-center hidden sm:table-cell">W</th><th className="p-3 sm:p-4 text-center hidden sm:table-cell">D</th><th className="p-3 sm:p-4 text-center hidden sm:table-cell">L</th><th className="p-3 sm:p-4 text-right">PTS</th></tr></thead>
                                     <tbody className="divide-y divide-white/[0.04]">
                                         {standings.map((team, idx) => (
-                                            <tr key={idx} className={`hover:bg-white/[0.03] transition-colors ${team.team === 'Vipawa Ladies FC' ? 'bg-gold/[0.06]' : ''}`}>
+                                            <tr key={idx} className={`hover:bg-white/[0.03] transition-colors ${team.team === 'Vipawa Ladies CF' ? 'bg-gold/[0.06]' : ''}`}>
                                                 <td className="p-3 sm:p-4 font-bold">{team.pos}</td><td className="p-3 sm:p-4 font-bold text-fluid-xs">{team.team}</td><td className="p-3 sm:p-4 text-center text-white/50">{team.played}</td><td className="p-3 sm:p-4 text-center text-white/50 hidden sm:table-cell">{team.won}</td><td className="p-3 sm:p-4 text-center text-white/50 hidden sm:table-cell">{team.drawn}</td><td className="p-3 sm:p-4 text-center text-white/50 hidden sm:table-cell">{team.lost}</td><td className="p-3 sm:p-4 text-right font-black text-gold">{team.points}</td>
                                             </tr>
                                         ))}

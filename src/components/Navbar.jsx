@@ -50,11 +50,11 @@ const Navbar = () => {
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="flex items-center gap-3 group relative z-[1100]" aria-label="Vipawa Ladies FC Home">
+                <Link href="/" className="flex items-center gap-3 group relative z-[1100]" aria-label="Vipawa Ladies CF Home">
                     <div className="relative h-12 w-12 md:h-14 md:w-14 transition-transform duration-300 group-hover:scale-110">
-                        <Image src="/images/vipawa-logo.jpg" alt="Vipawa Ladies FC Logo" fill className="object-contain rounded-full" sizes="56px" priority />
+                        <Image src="/images/vipawa-logo.jpg" alt="Vipawa Ladies CF Logo" fill className="object-contain rounded-full" sizes="56px" priority />
                     </div>
-                    <span className="font-heading font-bold text-lg tracking-tight hidden sm:block">Vipawa Ladies FC</span>
+                    <span className="font-heading font-bold text-lg tracking-tight hidden sm:block">Vipawa Ladies CF</span>
                 </Link>
 
                 {/* Desktop Menu */}

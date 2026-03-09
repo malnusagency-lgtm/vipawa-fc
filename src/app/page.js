@@ -3,7 +3,7 @@ import QuickAccess from '@/sections/QuickAccess';
 import SocialProof from '@/sections/SocialProof';
 
 export const metadata = {
-  title: "Home | Vipawa Ladies FC",
+  title: "Home | Vipawa Ladies CF",
   description: "Join the movement. Talented young women playing professional football in Nairobi.",
 };
 
@@ -16,3 +16,4 @@ export default function Home() {
     </main>
   );
 }
+

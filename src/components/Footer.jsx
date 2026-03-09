@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 
 const SocialIcon = ({ href, label, bgColor, children }) => (
     <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 group hover:scale-110 hover:shadow-lg ${bgColor}`}>
@@ -18,7 +18,7 @@ const Footer = () => (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 mb-14">
                 <div className="space-y-5">
                     <Link href="/" className="flex items-center gap-3">
-                        <span className="font-heading font-black text-xl tracking-tighter uppercase">Vipawa <span className="text-gold">Ladies FC</span></span>
+                        <span className="font-heading font-black text-xl tracking-tighter uppercase">Vipawa <span className="text-gold">Ladies CF</span></span>
                     </Link>
                     <p className="text-white/40 text-fluid-sm leading-relaxed max-w-xs">Nurturing young women through football excellence. From the streets of Nairobi to the world stage.</p>
                     <div className="flex items-center gap-3">
@@ -56,26 +56,32 @@ const Footer = () => (
                 </div>
 
                 <div>
-                    <h4 className="font-bold uppercase tracking-wider mb-5 text-fluid-sm">Support</h4>
+                    <h4 className="font-bold uppercase tracking-wider mb-5 text-fluid-sm">Training Hours</h4>
                     <ul className="space-y-3">
-                        <li><Link href="/support" className="text-white/40 hover:text-gold transition-colors text-fluid-sm">Start Donating</Link></li>
-                        <li><Link href="/support" className="text-white/40 hover:text-gold transition-colors text-fluid-sm">Become a Partner</Link></li>
-                        <li><Link href="/support" className="text-white/40 hover:text-gold transition-colors text-fluid-sm">Contact Us</Link></li>
+                        <li className="flex items-start gap-3 text-white/40 text-fluid-sm"><Clock size={16} className="text-gold shrink-0 mt-0.5" /><span>Mon – Fri: 8:00 AM</span></li>
+                        <li className="flex items-start gap-3 text-white/40 text-fluid-sm"><Clock size={16} className="text-gold shrink-0 mt-0.5" /><span>Weekends: 9:00 AM – 6:00 PM</span></li>
+                    </ul>
+                    <h4 className="font-bold uppercase tracking-wider mb-3 mt-6 text-fluid-sm">Grounds</h4>
+                    <ul className="space-y-2">
+                        <li className="flex items-start gap-3 text-white/40 text-fluid-sm"><MapPin size={14} className="text-gold shrink-0 mt-0.5" /><span>NCC – Ngong Road</span></li>
+                        <li className="flex items-start gap-3 text-white/40 text-fluid-sm"><MapPin size={14} className="text-gold shrink-0 mt-0.5" /><span>Moi Girls' School Nairobi Complex</span></li>
+                        <li className="flex items-start gap-3 text-white/40 text-fluid-sm"><MapPin size={14} className="text-gold shrink-0 mt-0.5" /><span>Kilimani Primary Grounds</span></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 className="font-bold uppercase tracking-wider mb-5 text-fluid-sm">Contact</h4>
                     <ul className="space-y-3">
-                        <li className="flex items-start gap-3 text-white/40 text-fluid-sm"><MapPin size={16} className="text-gold shrink-0 mt-0.5" /><span>Ngong Road Grounds<br />Nairobi, Kenya</span></li>
-                        <li className="flex items-center gap-3 text-white/40 text-fluid-sm"><Phone size={16} className="text-gold shrink-0" /><span>+254 700 890 123</span></li>
-                        <li className="flex items-center gap-3 text-white/40 text-fluid-sm"><Mail size={16} className="text-gold shrink-0" /><span>info@vipawafc.com</span></li>
+                        <li className="flex items-center gap-3 text-white/40 text-fluid-sm"><Phone size={16} className="text-gold shrink-0" /><a href="tel:+254727388550" className="hover:text-gold transition-colors">+254 727 388 550</a></li>
+                        <li className="flex items-center gap-3 text-white/40 text-fluid-sm"><Phone size={16} className="text-gold shrink-0" /><a href="tel:+254708981204" className="hover:text-gold transition-colors">+254 708 981 204</a></li>
+                        <li className="flex items-center gap-3 text-white/40 text-fluid-sm"><Phone size={16} className="text-gold shrink-0" /><a href="tel:+254717974149" className="hover:text-gold transition-colors">+254 717 974 149</a></li>
+                        <li className="flex items-center gap-3 text-white/40 text-fluid-sm"><Mail size={16} className="text-gold shrink-0" /><a href="mailto:vipawaladiescfk@gmail.com" className="hover:text-gold transition-colors">vipawaladiescfk@gmail.com</a></li>
                     </ul>
                 </div>
             </div>
 
             <div className="pt-8 border-t border-white/[0.04] flex items-center justify-center">
-                <p className="text-white/20 text-fluid-xs text-center">© 2026 Vipawa Ladies FC. All rights reserved.</p>
+                <p className="text-white/20 text-fluid-xs text-center">© 2026 Vipawa Ladies CF. All rights reserved.</p>
             </div>
         </div>
     </footer>

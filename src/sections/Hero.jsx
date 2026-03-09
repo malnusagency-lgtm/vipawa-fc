@@ -102,7 +102,7 @@ const Hero = () => {
                     <h1 className="text-fluid-hero font-black uppercase tracking-tighter leading-[0.9] mb-6">
                         Vipawa <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold">
-                            Ladies FC
+                            Ladies CF
                         </span>
                     </h1>
 
@@ -130,6 +130,32 @@ const Hero = () => {
                     <StatCounter end={18} label="Players" suffix="+" />
                     <StatCounter end={26} label="Fixtures" />
                     <StatCounter end={4} label="Years" suffix="+" />
+                </motion.div>
+
+                {/* Info Strip */}
+                <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1, duration: 0.6 }}
+                    className="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl"
+                >
+                    <div className="glass-card p-4 flex items-start gap-3">
+                        <span className="text-gold text-lg">🕐</span>
+                        <div>
+                            <h4 className="font-bold text-fluid-xs uppercase tracking-wider mb-1">Training Hours</h4>
+                            <p className="text-white/40 text-fluid-xs">Mon–Fri: 8:00 AM</p>
+                            <p className="text-white/40 text-fluid-xs">Weekends: 9:00 AM – 6:00 PM</p>
+                        </div>
+                    </div>
+                    <div className="glass-card p-4 flex items-start gap-3">
+                        <span className="text-gold text-lg">📍</span>
+                        <div>
+                            <h4 className="font-bold text-fluid-xs uppercase tracking-wider mb-1">Our Grounds</h4>
+                            <p className="text-white/40 text-fluid-xs">NCC – Ngong Road</p>
+                            <p className="text-white/40 text-fluid-xs">Moi Girls' School Complex</p>
+                            <p className="text-white/40 text-fluid-xs">Kilimani Primary Grounds</p>
+                        </div>
+                    </div>
                 </motion.div>
             </div>
 

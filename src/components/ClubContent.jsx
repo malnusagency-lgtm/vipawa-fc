@@ -99,11 +99,19 @@ const ClubContent = ({ organization }) => {
                             <div className="text-fluid-xs uppercase tracking-[0.2em] text-white/30">Season</div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
-                        {organization.squad.map((player) => (
-                            <PlayerCard key={player.id} player={player} />
-                        ))}
-                    </div>
+                    {['GK', 'DEF', 'MID', 'FWD'].map((pos) => {
+                        const posNames = { GK: 'Goalkeepers', DEF: 'Defenders', MID: 'Midfielders', FWD: 'Forwards' };
+                        const players = organization.squad.filter(p => p.position === pos);
+                        if (!players.length) return null;
+                        return (
+                            <div key={pos} className="mb-10">
+                                <h3 className="text-fluid-xs font-bold uppercase tracking-[0.2em] text-gold/60 mb-4 border-b border-white/[0.04] pb-3">{posNames[pos]}</h3>
+                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
+                                    {players.map(player => <PlayerCard key={player.id} player={player} />)}
+                                </div>
+                            </div>
+                        );
+                    })}
                 </section>
             </div>
         </div>

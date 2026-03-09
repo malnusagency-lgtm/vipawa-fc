@@ -38,7 +38,7 @@ export const matches = [
 ];
 
 export const standings = [
-    { pos: 1, team: 'Vipawa Ladies FC', played: 12, won: 9, drawn: 2, lost: 1, points: 29 },
+    { pos: 1, team: 'Vipawa Ladies CF', played: 12, won: 9, drawn: 2, lost: 1, points: 29 },
     { pos: 2, team: 'Nairobi Queens', played: 12, won: 8, drawn: 3, lost: 1, points: 27 },
     { pos: 3, team: 'Kibera Soccer', played: 11, won: 7, drawn: 2, lost: 2, points: 23 },
     { pos: 4, team: 'Makadara Ladies', played: 12, won: 6, drawn: 4, lost: 2, points: 22 },
@@ -91,24 +91,28 @@ export const organization = {
         { name: 'Brandon Nyongesa', role: 'Asst. Coach (Brandon)', image: '/images/coaches/brandon.jpeg' },
     ],
     squad: [
+        // GOALKEEPERS
+        { id: 14, name: 'Valary Akinyi', number: 1, position: 'GK', image: '/images/squad/player-14.jpeg' },
+        // DEFENDERS
+        { id: 7, name: 'Faith Ouma', number: 2, position: 'DEF', image: '/images/squad/player-7.jpeg' },
         { id: 1, name: 'Abigael', number: 3, position: 'DEF', image: '/images/squad/player-1.jpeg' },
-        { id: 2, name: "Achieng'", number: 9, position: 'FWD', image: '/images/squad/player-2.jpeg' },
         { id: 3, name: 'Ann Wanjiku (Shiku)', number: 4, position: 'DEF', image: '/images/squad/player-3.jpeg' },
+        { id: 6, name: 'Dolvin Chiteri', number: 5, position: 'DEF', image: '/images/squad/player-6.jpeg' },
+        { id: 8, name: 'Fanice', number: 6, position: 'DEF', image: '/images/squad/player-8.jpeg' },
+        { id: 11, name: 'Maureen', number: 12, position: 'DEF', image: '/images/squad/player-11.jpeg' },
+        { id: 17, name: 'Volenter', number: 15, position: 'DEF', image: '/images/squad/player-17.jpeg' },
+        // MIDFIELDERS
         { id: 4, name: 'Celine', number: 8, position: 'MID', image: '/images/squad/player-4.jpeg' },
         { id: 5, name: 'Divinah', number: 10, position: 'MID', image: '/images/squad/player-5.jpeg' },
-        { id: 6, name: 'Dolvin Chiteri', number: 5, position: 'DEF', image: '/images/squad/player-6.jpeg' },
-        { id: 7, name: 'Faith Ouma', number: 2, position: 'DEF', image: '/images/squad/player-7.jpeg' },
-        { id: 8, name: 'Fanice', number: 6, position: 'DEF', image: '/images/squad/player-8.jpeg' },
-        { id: 9, name: 'Maggie', number: 11, position: 'FWD', image: '/images/squad/player-9.jpeg' },
         { id: 10, name: 'Malia', number: 14, position: 'MID', image: '/images/squad/player-10.jpeg' },
-        { id: 11, name: 'Maureen', number: 12, position: 'DEF', image: '/images/squad/player-11.jpeg' },
-        { id: 12, name: 'Mirriam', number: 7, position: 'FWD', image: '/images/squad/player-12.png' },
         { id: 13, name: 'Shernny', number: 16, position: 'MID', image: '/images/squad/player-13.jpeg' },
-        { id: 14, name: 'Valary Akinyi', number: 1, position: 'GK', image: '/images/squad/player-14.jpeg' },
+        { id: 18, name: 'Wilcaster', number: 18, position: 'MID', image: '/images/squad/player-18.jpeg' },
+        // FORWARDS
+        { id: 2, name: "Achieng'", number: 9, position: 'FWD', image: '/images/squad/player-2.jpeg' },
+        { id: 12, name: 'Mirriam', number: 7, position: 'FWD', image: '/images/squad/player-12.png' },
+        { id: 9, name: 'Maggie', number: 11, position: 'FWD', image: '/images/squad/player-9.jpeg' },
         { id: 15, name: 'Veronica', number: 17, position: 'FWD', image: '/images/squad/player-15.jpeg' },
         { id: 16, name: 'Vicky', number: 19, position: 'FWD', image: '/images/squad/player-16.jpeg' },
-        { id: 17, name: 'Volenter', number: 15, position: 'DEF', image: '/images/squad/player-17.jpeg' },
-        { id: 18, name: 'Wilcaster', number: 18, position: 'MID', image: '/images/squad/player-18.jpeg' },
     ]
 };
 
@@ -143,5 +147,5 @@ export const news = [
 export const galleryImages = Array.from({ length: 92 }, (_, i) => ({
     id: i + 1,
     src: `/images/gallery/gallery-${i + 1}.jpeg`,
-    alt: `Vipawa Ladies FC Gallery Image ${i + 1}`,
+    alt: `Vipawa Ladies CF Gallery Image ${i + 1}`,
 }));

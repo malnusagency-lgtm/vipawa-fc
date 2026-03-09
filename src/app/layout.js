@@ -19,24 +19,31 @@ const inter = Inter({
 
 export const metadata = {
   metadataBase: new URL("https://vipawafc.com"),
-  title: "Vipawa Ladies FC | Talent into Power",
-  description: "Official website of Vipawa Ladies FC. Nurturing young women through football excellence. Based in Nairobi, Kenya.",
+  title: "Vipawa Ladies CF | Talent into Power",
+  description: "Official website of Vipawa Ladies CF. Nurturing young women through football excellence. Based in Nairobi, Kenya.",
   openGraph: {
-    title: "Vipawa Ladies FC | Talent into Power",
+    title: "Vipawa Ladies CF | Talent into Power",
     description: "Nurturing young women through football excellence. Based in Nairobi, Kenya.",
     url: "https://vipawafc.com",
-    siteName: "Vipawa Ladies FC",
+    siteName: "Vipawa Ladies CF",
     images: [
       {
         url: "/images/gallery/gallery-3.jpeg",
         width: 1200,
         height: 630,
-        alt: "Vipawa Ladies FC Squad",
+        alt: "Vipawa Ladies CF Squad",
       },
     ],
     locale: "en_KE",
     type: "website",
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#070b14",
 };
 
 export default function RootLayout({ children }) {
@@ -58,3 +65,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
