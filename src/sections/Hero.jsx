@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
+import { fixtures } from '@/data/clubData';
 
 const CountdownUnit = ({ value, label }) => (
     <div className="text-center">
@@ -47,14 +48,41 @@ const StatCounter = ({ end, label, suffix = '' }) => {
 };
 
 const Hero = () => {
-    // Countdown to next match: Jan 25, 2026 15:00 EAT
+    const [nextMatch, setNextMatch] = useState(null);
     const [countdown, setCountdown] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
 
     useEffect(() => {
-        const target = new Date('2026-01-25T15:00:00+03:00').getTime();
+        const now = new Date();
+        let upcomingMatch = null;
+        let targetTime = 0;
+
+        // Find the first match that is in the future
+        for (const match of fixtures) {
+            const [day, month, year] = match.date.split('/');
+            const [hours, minutes] = match.time.split(':');
+            const matchDate = new Date(year, month - 1, day, hours, minutes);
+            
+            if (matchDate > now) {
+                upcomingMatch = match;
+                targetTime = matchDate.getTime();
+                break;
+            }
+        }
+
+        // If no future matches, default to the last match in the list
+        if (!upcomingMatch && fixtures.length > 0) {
+            upcomingMatch = fixtures[fixtures.length - 1];
+            const [day, month, year] = upcomingMatch.date.split('/');
+            const [hours, minutes] = upcomingMatch.time.split(':');
+            targetTime = new Date(year, month - 1, day, hours, minutes).getTime();
+        }
+
+        setNextMatch(upcomingMatch);
+
+        if (!targetTime) return;
+
         const tick = () => {
-            const now = Date.now();
-            const diff = Math.max(0, target - now);
+            const diff = Math.max(0, targetTime - Date.now());
             setCountdown({
                 days: Math.floor(diff / 86400000),
                 hours: Math.floor((diff % 86400000) / 3600000),
@@ -160,30 +188,34 @@ const Hero = () => {
             </div>
 
             {/* Floating Next Match Card */}
-            <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute bottom-8 right-4 sm:right-8 md:right-16 glass-card-elevated p-5 sm:p-6 max-w-[300px] z-20"
-            >
-                <div className="flex items-center gap-2 mb-3">
-                    <span className="w-2 h-2 rounded-full bg-accent-red animate-ping" />
-                    <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-accent-red">Next Match</span>
-                </div>
-                <div className="flex justify-between items-center gap-4 mb-4">
-                    <span className="font-black uppercase text-fluid-base">Vipawa</span>
-                    <span className="text-white/20 text-xs font-heading">VS</span>
-                    <span className="font-black uppercase text-fluid-base text-right">Queens</span>
-                </div>
-                {/* Countdown */}
-                <div className="grid grid-cols-4 gap-2 pt-3 border-t border-white/[0.06]">
-                    <CountdownUnit value={countdown.days} label="Days" />
-                    <CountdownUnit value={countdown.hours} label="Hrs" />
-                    <CountdownUnit value={countdown.mins} label="Min" />
-                    <CountdownUnit value={countdown.secs} label="Sec" />
-                </div>
-                <p className="text-[10px] text-white/30 mt-3 text-center tracking-wider">Jan 25 • 3:00 PM • Ngong Road</p>
-            </motion.div>
+            {nextMatch && (
+                <motion.div
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 1.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute bottom-8 right-4 sm:right-8 md:right-16 glass-card-elevated p-5 sm:p-6 max-w-[300px] z-20"
+                >
+                    <div className="flex items-center gap-2 mb-3">
+                        <span className="w-2 h-2 rounded-full bg-accent-red animate-ping" />
+                        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-accent-red">Next Match</span>
+                    </div>
+                    <div className="flex justify-between items-center gap-4 mb-4">
+                        <span className="font-black uppercase text-fluid-base">Vipawa</span>
+                        <span className="text-white/20 text-xs font-heading">VS</span>
+                        <span className="font-black uppercase text-fluid-base text-right max-w-[120px] truncate" title={nextMatch.opponent}>{nextMatch.opponent}</span>
+                    </div>
+                    {/* Countdown */}
+                    <div className="grid grid-cols-4 gap-2 pt-3 border-t border-white/[0.06]">
+                        <CountdownUnit value={countdown.days} label="Days" />
+                        <CountdownUnit value={countdown.hours} label="Hrs" />
+                        <CountdownUnit value={countdown.mins} label="Min" />
+                        <CountdownUnit value={countdown.secs} label="Sec" />
+                    </div>
+                    <p className="text-[10px] text-white/30 mt-3 text-center tracking-wider">
+                        {new Date(nextMatch.date.split('/').reverse().join('-')).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} • {nextMatch.time} • {nextMatch.venue}
+                    </p>
+                </motion.div>
+            )}
         </section>
     );
 };
