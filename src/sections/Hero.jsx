@@ -42,7 +42,7 @@ const StatCounter = ({ end, label, suffix = '' }) => {
     return (
         <div ref={ref} className="text-center">
             <div className="text-fluid-3xl font-black font-heading text-gold">{count}{suffix}</div>
-            <div className="text-fluid-xs uppercase tracking-[0.2em] text-white/40 mt-1">{label}</div>
+            <div className="text-fluid-xs uppercase tracking-[0.2em] text-white/70 mt-1">{label}</div>
         </div>
     );
 };
@@ -134,7 +134,7 @@ const Hero = () => {
                         </span>
                     </h1>
 
-                    <p className="text-fluid-lg text-white/50 font-heading max-w-lg mb-10">
+                    <p className="text-fluid-lg text-white/80 font-heading max-w-lg mb-10">
                         Talent into Power. <br />Nurturing excellence since 2021.
                     </p>
 
@@ -171,17 +171,17 @@ const Hero = () => {
                         <span className="text-gold text-lg">🕐</span>
                         <div>
                             <h4 className="font-bold text-fluid-xs uppercase tracking-wider mb-1">Training Hours</h4>
-                            <p className="text-white/40 text-fluid-xs">Mon–Fri: 8:00 AM</p>
-                            <p className="text-white/40 text-fluid-xs">Weekends: 9:00 AM – 6:00 PM</p>
+                            <p className="text-white/70 text-fluid-xs">Mon–Fri: 8:00 AM</p>
+                            <p className="text-white/70 text-fluid-xs">Weekends: 9:00 AM – 6:00 PM</p>
                         </div>
                     </div>
                     <div className="glass-card p-4 flex items-start gap-3">
                         <span className="text-gold text-lg">📍</span>
                         <div>
                             <h4 className="font-bold text-fluid-xs uppercase tracking-wider mb-1">Our Grounds</h4>
-                            <p className="text-white/40 text-fluid-xs">NCC – Ngong Road</p>
-                            <p className="text-white/40 text-fluid-xs">Moi Girls' School Complex</p>
-                            <p className="text-white/40 text-fluid-xs">Kilimani Primary Grounds</p>
+                            <p className="text-white/70 text-fluid-xs">NCC – Ngong Road</p>
+                            <p className="text-white/70 text-fluid-xs">Moi Girls' School Complex</p>
+                            <p className="text-white/70 text-fluid-xs">Kilimani Primary Grounds</p>
                         </div>
                     </div>
                 </motion.div>
@@ -200,7 +200,7 @@ const Hero = () => {
                         </div>
                         <div className="flex justify-between items-center gap-4 mb-4">
                             <span className="font-black uppercase text-fluid-base">Vipawa</span>
-                            <span className="text-white/20 text-xs font-heading">VS</span>
+                            <span className="text-white/50 text-xs font-heading">VS</span>
                             <span className="font-black uppercase text-fluid-base text-right max-w-[120px] truncate" title={nextMatch.opponent}>{nextMatch.opponent}</span>
                         </div>
                         {/* Countdown */}
@@ -210,7 +210,7 @@ const Hero = () => {
                             <CountdownUnit value={countdown.mins} label="Min" />
                             <CountdownUnit value={countdown.secs} label="Sec" />
                         </div>
-                        <p className="text-[10px] text-white/30 mt-3 text-center tracking-wider">
+                        <p className="text-[10px] text-white/60 mt-3 text-center tracking-wider">
                             {new Date(nextMatch.date.split('/').reverse().join('-')).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} • {nextMatch.time} • {nextMatch.venue}
                         </p>
                     </motion.div>

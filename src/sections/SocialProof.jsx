@@ -17,8 +17,8 @@ const SocialProof = () => {
                     <div className="flex animate-marquee whitespace-nowrap">
                         {[...slogans, ...slogans, ...slogans, ...slogans].map((slogan, i) => (
                             <span key={i} className="flex items-center">
-                                <span className="text-fluid-2xl font-black uppercase text-gold/30 px-4 sm:px-6">{slogan}</span>
-                                <span className="w-2 h-2 rounded-full bg-gold/30 shrink-0 mx-2" aria-hidden="true" />
+                                <span className="text-fluid-2xl font-black uppercase text-gold/80 px-4 sm:px-6">{slogan}</span>
+                                <span className="w-2 h-2 rounded-full bg-gold/70 shrink-0 mx-2" aria-hidden="true" />
                             </span>
                         ))}
                     </div>
@@ -31,7 +31,7 @@ const SocialProof = () => {
                     <div className="max-w-2xl mx-auto text-center">
                         <span className="section-tag">Stay Updated</span>
                         <h2 className="text-fluid-3xl font-black uppercase mb-4">Join the Vipawa Army</h2>
-                        <p className="text-white/50 text-fluid-sm mb-8 max-w-md mx-auto">
+                        <p className="text-white/80 text-fluid-sm mb-8 max-w-md mx-auto">
                             Get match updates, news, and exclusive content delivered to your inbox.
                         </p>
                         <form
