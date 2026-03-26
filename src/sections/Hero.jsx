@@ -185,37 +185,37 @@ const Hero = () => {
                         </div>
                     </div>
                 </motion.div>
-            </div>
 
-            {/* Floating Next Match Card */}
-            {nextMatch && (
-                <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 1.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute bottom-8 right-4 sm:right-8 md:right-16 glass-card-elevated p-5 sm:p-6 max-w-[300px] z-20"
-                >
-                    <div className="flex items-center gap-2 mb-3">
-                        <span className="w-2 h-2 rounded-full bg-accent-red animate-ping" />
-                        <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-accent-red">Next Match</span>
-                    </div>
-                    <div className="flex justify-between items-center gap-4 mb-4">
-                        <span className="font-black uppercase text-fluid-base">Vipawa</span>
-                        <span className="text-white/20 text-xs font-heading">VS</span>
-                        <span className="font-black uppercase text-fluid-base text-right max-w-[120px] truncate" title={nextMatch.opponent}>{nextMatch.opponent}</span>
-                    </div>
-                    {/* Countdown */}
-                    <div className="grid grid-cols-4 gap-2 pt-3 border-t border-white/[0.06]">
-                        <CountdownUnit value={countdown.days} label="Days" />
-                        <CountdownUnit value={countdown.hours} label="Hrs" />
-                        <CountdownUnit value={countdown.mins} label="Min" />
-                        <CountdownUnit value={countdown.secs} label="Sec" />
-                    </div>
-                    <p className="text-[10px] text-white/30 mt-3 text-center tracking-wider">
-                        {new Date(nextMatch.date.split('/').reverse().join('-')).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} • {nextMatch.time} • {nextMatch.venue}
-                    </p>
-                </motion.div>
-            )}
+                {/* Next Match Card (Flow on Mobile, Absolute on Desktop) */}
+                {nextMatch && (
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 1.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="mt-10 lg:absolute lg:bottom-12 lg:right-16 lg:mt-0 glass-card-elevated p-5 sm:p-6 w-full sm:max-w-sm lg:w-[320px] lg:max-w-none z-20"
+                    >
+                        <div className="flex items-center gap-2 mb-3">
+                            <span className="w-2 h-2 rounded-full bg-accent-red animate-ping" />
+                            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-accent-red">Next Match</span>
+                        </div>
+                        <div className="flex justify-between items-center gap-4 mb-4">
+                            <span className="font-black uppercase text-fluid-base">Vipawa</span>
+                            <span className="text-white/20 text-xs font-heading">VS</span>
+                            <span className="font-black uppercase text-fluid-base text-right max-w-[120px] truncate" title={nextMatch.opponent}>{nextMatch.opponent}</span>
+                        </div>
+                        {/* Countdown */}
+                        <div className="grid grid-cols-4 gap-2 pt-3 border-t border-white/[0.06]">
+                            <CountdownUnit value={countdown.days} label="Days" />
+                            <CountdownUnit value={countdown.hours} label="Hrs" />
+                            <CountdownUnit value={countdown.mins} label="Min" />
+                            <CountdownUnit value={countdown.secs} label="Sec" />
+                        </div>
+                        <p className="text-[10px] text-white/30 mt-3 text-center tracking-wider">
+                            {new Date(nextMatch.date.split('/').reverse().join('-')).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} • {nextMatch.time} • {nextMatch.venue}
+                        </p>
+                    </motion.div>
+                )}
+            </div>
         </section>
     );
 };
