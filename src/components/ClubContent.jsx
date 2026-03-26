@@ -13,7 +13,7 @@ const HierarchyCard = ({ member, type }) => {
             className={`glass-card p-5 sm:p-6 flex flex-col items-center text-center group hover:translate-y-[-4px] hover:shadow-elevated transition-all duration-500 ${isLeader ? 'border-gold/20 bg-gold/[0.03]' : ''}`}
         >
             <div className={`relative mb-4 sm:mb-5 rounded-full overflow-hidden border-2 ${isLeader ? 'w-28 h-28 sm:w-36 sm:h-36 border-gold/50' : 'w-20 h-20 sm:w-24 sm:h-24 border-white/10'} transition-all duration-500 group-hover:border-gold/60`}>
-                <Image src={member.image} alt={member.name} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes={isLeader ? "144px" : "96px"} />
+                <Image src={member.image} alt={member.name} fill className="object-cover object-[center_15%] transition-transform duration-500 group-hover:scale-110" sizes={isLeader ? "144px" : "96px"} />
             </div>
             <h3 className={`font-black uppercase mb-1 ${isLeader ? 'text-fluid-lg' : 'text-fluid-base'}`}>{member.name}</h3>
             <p className="text-fluid-xs font-bold uppercase tracking-[0.15em] text-gold">{member.role}</p>
