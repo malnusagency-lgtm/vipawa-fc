@@ -77,18 +77,18 @@ export const fixtures = [
 export const organization = {
     leadership: [
         { name: 'Catherine Mogu', role: 'Chairperson', image: '/images/gallery/gallery-1.jpeg' },
-        { name: 'Humprey Aluanga', role: 'Brand Ambassador', image: '/images/gallery/gallery-2.jpeg' },
+        { name: 'Humprey Aluanga', role: 'Brand Ambassador', image: '/images/leadership/Humprey Aluanga.png' },
     ],
     management: [
-        { name: 'Mark Ondiek', role: 'Technical Director', image: '/images/gallery/gallery-3.jpeg' },
+        { name: 'Mark Ondiek', role: 'Technical Director', image: '/images/leadership/Mark Ondiek.png' },
     ],
     communication: [
-        { name: 'Dennis Ayekha', role: 'Communication', image: '/images/gallery/gallery-4.jpeg' },
+        { name: 'Dennis Ayekha', role: 'Communication', image: '/images/leadership/Dennis Ayekha.png' },
     ],
     technical: [
-        { name: 'Ramadhan Ochieng', role: 'Head Coach (Mariga)', image: '/images/coaches/mariga.jpeg' },
-        { name: 'Boniface Otieno', role: 'Asst. Coach (Bonny)', image: '/images/coaches/bonny.jpeg' },
-        { name: 'Brandon Nyongesa', role: 'Asst. Coach (Brandon)', image: '/images/coaches/brandon.jpeg' },
+        { name: 'Ramadhan Ochieng', role: 'Head Coach (Mariga)', image: '/images/leadership/MARIGA.jpeg' },
+        { name: 'Boniface Otieno', role: 'Asst. Coach (Bonny)', image: '/images/leadership/Coach Bonny.jpeg' },
+        { name: 'Brandon Nyongesa', role: 'Asst. Coach (Brandon)', image: '/images/leadership/Brandon.jpeg' },
     ],
     squad: [
         // GOALKEEPERS

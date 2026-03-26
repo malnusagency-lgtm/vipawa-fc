@@ -4,6 +4,7 @@ import LenisProvider from "@/components/LenisProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
+import NextTopLoader from 'nextjs-toploader';
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -54,6 +55,7 @@ export default function RootLayout({ children }) {
           <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[3000] focus:bg-gold focus:text-primary focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold">
             Skip to content
           </a>
+          <NextTopLoader color="#c9a84c" showSpinner={false} height={3} shadow="0 0 10px #c9a84c,0 0 5px #c9a84c" />
           <ScrollProgress />
           <Navbar />
           <main id="main-content" className="flex-grow">
