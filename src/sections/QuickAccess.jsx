@@ -7,9 +7,9 @@ import { Ticket, Users, Trophy } from 'lucide-react';
 
 const QuickAccess = () => {
     const cards = [
-        { href: '/club', image: '/images/gallery/gallery-5.jpeg', icon: Users, title: 'The Squad', desc: 'Meet the 2026 First Team' },
+        { href: '/club', image: '/images/backgrounds/the squad background image.jpeg', icon: Users, title: 'The Squad', desc: 'Meet the 2026 First Team' },
         { href: '/kits', image: '/images/merchandise/kits-collection.jpeg', icon: Trophy, title: 'New Kits', desc: 'Shop the 25/26 Collection' },
-        { href: '/support', image: '/images/gallery/gallery-15.jpeg', icon: Ticket, title: 'Join Us', desc: 'Become a Member' },
+        { href: '/support', image: '/images/backgrounds/join us background image.jpeg', icon: Ticket, title: 'Join Us', desc: 'Become a Member' },
     ];
 
     return (
