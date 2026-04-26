@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import NextTopLoader from 'nextjs-toploader';
+import PageTransition from "@/components/PageTransition";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -22,6 +23,7 @@ export const metadata = {
   metadataBase: new URL("https://vipawafc.com"),
   title: "Vipawa Ladies CF | Talent into Power",
   description: "Official website of Vipawa Ladies CF. Nurturing young women through football excellence. Based in Nairobi, Kenya.",
+  manifest: "/manifest.json",
   openGraph: {
     title: "Vipawa Ladies CF | Talent into Power",
     description: "Nurturing young women through football excellence. Based in Nairobi, Kenya.",
@@ -59,7 +61,7 @@ export default function RootLayout({ children }) {
           <ScrollProgress />
           <Navbar />
           <main id="main-content" className="flex-grow">
-            {children}
+            <PageTransition>{children}</PageTransition>
           </main>
           <Footer />
         </LenisProvider>

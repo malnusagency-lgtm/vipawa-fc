@@ -44,16 +44,11 @@ const PlayerGalleryCard = ({ player }) => (
                 sizes="(max-width: 640px) 45vw, (max-width: 768px) 30vw, (max-width: 1024px) 22vw, 200px"
             />
             {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-
-            {/* Jersey number badge */}
-            <div className="absolute top-3 right-3 w-9 h-9 rounded-full bg-gold/90 text-primary flex items-center justify-center font-heading font-black text-sm shadow-lg">
-                {player.number}
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
             {/* Player info overlay at bottom */}
             <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
-                <h3 className="font-black uppercase text-sm sm:text-base leading-tight mb-1 drop-shadow-lg">{player.name}</h3>
+                <h3 className="font-black uppercase text-sm sm:text-base leading-tight mb-1.5 drop-shadow-lg">{player.name}</h3>
                 <span className="inline-block px-2.5 py-1 bg-gold/20 backdrop-blur-sm rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] text-gold border border-gold/20">
                     {player.position === 'GK' ? 'Goalkeeper' : player.position === 'DEF' ? 'Defender' : player.position === 'MID' ? 'Midfielder' : 'Forward'}
                 </span>
@@ -143,7 +138,7 @@ const ClubContent = ({ organization }) => {
                             return (
                                 <div key={pos} className="mb-12">
                                     <h3 className="text-fluid-sm font-bold uppercase tracking-[0.2em] text-gold mb-5 flex items-center gap-3">
-                                        <span className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold text-xs font-black">{players.length}</span>
+                                        <span className="w-6 h-0.5 bg-gold/50 rounded-full" />
                                         {posNames[pos]}
                                     </h3>
                                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
