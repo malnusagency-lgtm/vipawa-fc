@@ -107,13 +107,13 @@ const ClubContent = ({ organization }) => {
                 {/* The Squad — Gallery Format */}
                 <section className="relative -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 sm:py-24 overflow-hidden" aria-labelledby="squad-heading">
                     {/* Fixed Background Layer */}
-                    <div className="absolute inset-0 z-0">
+                    <div className="absolute inset-0 z-0 overflow-hidden" style={{ clipPath: 'inset(0 0 0 0)' }}>
                         <div 
-                            className="absolute inset-0 bg-[url('/images/backgrounds/the%20squad%20background%20image.jpeg')] bg-cover bg-center"
-                            style={{ backgroundAttachment: 'fixed' }}
+                            className="fixed inset-0 w-full h-full bg-[url('/images/backgrounds/the%20squad%20background%20image.jpeg')] bg-cover bg-center will-change-transform"
+                            style={{ transform: 'translateZ(0)' }}
                         />
-                        <div className="absolute inset-0 bg-primary/90" />
                     </div>
+                    <div className="absolute inset-0 bg-primary/90 z-[1]" />
 
                     <div className="relative z-10">
                         <div className="flex items-end justify-between mb-8 sm:mb-12 border-b border-white/[0.06] pb-4 sm:pb-6">

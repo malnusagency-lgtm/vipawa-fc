@@ -206,6 +206,17 @@ body {
   background: rgba(201, 168, 76, 0.5);
 }
 
+/* ─── Cross-Device Stability ─── */
+@media (max-width: 1024px) {
+  /* Disable background-attachment: fixed on mobile to prevent jitter/zoom issues */
+  /* Most mobile browsers don't support it correctly anyway */
+  [style*="background-attachment: fixed"],
+  .bg-fixed {
+    background-attachment: scroll !important;
+    background-position: center center !important;
+  }
+}
+
 /* ─── Noise Texture ─── */
 .noise::after {
   content: '';
