@@ -216,13 +216,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── Cross-Device Stability ─── */
 @media (max-width: 1024px) {
-  /* Disable background-attachment: fixed on mobile to prevent jitter/zoom issues */
-  /* Most mobile browsers don't support it correctly anyway */
-  [style*="background-attachment: fixed"],
-  .bg-fixed {
-    background-attachment: scroll !important;
-    background-position: center center !important;
-  }
+  /* Some mobile browsers don't support bg-fixed correctly, but we leave it enabled to honor user parallax request */
 }
 
 /* ─── Noise Texture ─── */

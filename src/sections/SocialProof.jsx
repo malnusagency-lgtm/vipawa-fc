@@ -27,25 +27,17 @@ const SocialProof = () => {
             </section>
 
             {/* Newsletter CTA */}
-            <section className="section-padding relative overflow-hidden" aria-label="Newsletter signup">
-                <div className="absolute inset-0 z-0 overflow-hidden" style={{ clipPath: 'inset(0 0 0 0)' }}>
-                    <div className="absolute sm:fixed inset-0 w-full h-full">
-                        <Image 
-                            src="/images/backgrounds/stay-updated-section-background.jpeg" 
-                            alt="Vipawa Army" 
-                            fill 
-                            className="object-cover opacity-80" 
-                            sizes="100vw"
-                            quality={75}
-                        />
-                    </div>
-                </div>
-                <div className="absolute inset-0 bg-primary/20 z-[1]" />
-
+            <section 
+                className="section-padding relative overflow-hidden bg-fixed bg-center bg-cover" 
+                style={{ backgroundImage: 'url(/images/backgrounds/stay-updated-section-background.jpeg)' }}
+                aria-label="Newsletter signup"
+            >
+                <div className="absolute inset-0 bg-primary/80 z-[1]" />
+                
                 <div className="container-custom relative z-10">
                     <div className="max-w-2xl mx-auto text-center">
                         <span className="section-tag">Stay Updated</span>
-                        <h2 className="text-fluid-3xl font-black uppercase mb-4">Join the Vipawa Army</h2>
+                        <h2 className="text-fluid-3xl font-black uppercase mb-4 text-white drop-shadow-md">Join the Vipawa Army</h2>
                         <p className="text-white font-bold text-fluid-sm mb-8 max-w-md mx-auto drop-shadow-lg">
                             Get match updates, news, and exclusive content delivered to your inbox.
                         </p>
