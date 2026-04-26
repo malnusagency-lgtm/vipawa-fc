@@ -195,7 +195,7 @@ const Hero = () => {
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 1.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="mt-10 lg:absolute lg:bottom-12 lg:right-16 lg:mt-0 glass-card-elevated p-5 sm:p-6 w-full sm:max-w-sm lg:w-[320px] lg:max-w-none z-20"
+                        className="mt-12 mb-16 xl:absolute xl:bottom-12 xl:right-16 xl:mt-0 xl:mb-0 glass-card-elevated p-5 sm:p-6 w-full sm:max-w-sm lg:max-w-md xl:w-[320px] xl:max-w-none z-20"
                     >
                         <div className="flex items-center gap-2 mb-3">
                             <span className="w-2 h-2 rounded-full bg-accent-red animate-ping" />

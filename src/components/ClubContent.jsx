@@ -79,7 +79,7 @@ const ClubContent = ({ organization }) => {
                 {/* Leadership */}
                 <section className="mb-16 sm:mb-24 relative" aria-labelledby="leadership-heading">
                     <div className="absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2 text-[50px] sm:text-[80px] md:text-[140px] font-black text-white/[0.03] whitespace-nowrap pointer-events-none select-none" aria-hidden="true">LEADERSHIP</div>
-                    <h2 id="leadership-heading" className="text-fluid-xl font-bold uppercase text-center mb-8 sm:mb-12 relative z-10">Club Leadership</h2>
+                    <h2 id="leadership-heading" className="text-fluid-xl font-bold uppercase text-center mb-8 sm:mb-12 relative z-10">Board</h2>
                     <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
                         {organization.leadership.map((member, idx) => (
                             <HierarchyCard key={idx} member={member} type="leader" />

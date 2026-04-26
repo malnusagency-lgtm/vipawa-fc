@@ -94,7 +94,7 @@ export const organization = {
     squad: [
         // GOALKEEPERS
         { id: 14, name: 'Valary Akinyi', number: 1, position: 'GK', image: '/images/squad/player-14.jpeg' },
-        { id: 19, name: 'Vivian Chiteri', number: 20, position: 'GK', image: '/images/squad/Vivian-Chiteri---Goalkeeper.png' },
+        { id: 19, name: 'Vivian Chiteri', number: 20, position: 'GK', image: '/images/squad/Vivian-Chiteri-Goalkeeper.png' },
         // DEFENDERS
         { id: 7, name: 'Faith Ouma', number: 2, position: 'DEF', image: '/images/squad/player-7.jpeg' },
         { id: 1, name: 'Abigael', number: 3, position: 'DEF', image: '/images/squad/player-1.jpeg' },

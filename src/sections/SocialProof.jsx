@@ -29,18 +29,18 @@ const SocialProof = () => {
             {/* Newsletter CTA */}
             <section className="section-padding relative overflow-hidden" aria-label="Newsletter signup">
                 <div className="absolute inset-0 z-0 overflow-hidden" style={{ clipPath: 'inset(0 0 0 0)' }}>
-                    <div className="fixed inset-0 w-full h-full will-change-transform" style={{ transform: 'translateZ(0)' }}>
+                    <div className="absolute sm:fixed inset-0 w-full h-full">
                         <Image 
                             src="/images/backgrounds/stay-updated-section-background.jpeg" 
                             alt="Vipawa Army" 
                             fill 
-                            className="object-cover" 
+                            className="object-cover opacity-80" 
                             sizes="100vw"
                             quality={75}
                         />
                     </div>
                 </div>
-                <div className="absolute inset-0 bg-primary/13 z-[1]" />
+                <div className="absolute inset-0 bg-primary/20 z-[1]" />
 
                 <div className="container-custom relative z-10">
                     <div className="max-w-2xl mx-auto text-center">
