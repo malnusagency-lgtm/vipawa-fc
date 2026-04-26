@@ -47,8 +47,8 @@ const QuickAccess = () => {
                                             <div className="w-10 h-10 rounded-full bg-gold/30 flex items-center justify-center mb-3 group-hover:bg-gold/40 transition-colors shadow-lg">
                                                 <card.icon size={18} className="text-gold" />
                                             </div>
-                                            <h3 className="text-fluid-2xl font-black uppercase mb-1 drop-shadow-md">{card.title}</h3>
-                                            <p className="text-white/90 text-fluid-sm font-medium drop-shadow-sm">{card.desc}</p>
+                                            <h3 className="text-fluid-2xl font-black uppercase mb-1 drop-shadow-lg">{card.title}</h3>
+                                            <p className="text-white font-bold text-fluid-sm drop-shadow-md">{card.desc}</p>
                                         </div>
                                     </>
                                 ) : (

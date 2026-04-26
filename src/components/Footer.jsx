@@ -29,7 +29,7 @@ const Footer = () => (
                     <Link href="/" className="flex items-center gap-3">
                         <span className="font-heading font-black text-xl tracking-tighter uppercase">Vipawa <span className="text-gold">Ladies CF</span></span>
                     </Link>
-                    <p className="text-white/70 text-fluid-sm leading-relaxed max-w-xs">Nurturing young women through football excellence. From the streets of Nairobi to the world stage.</p>
+                    <p className="text-white font-medium text-fluid-sm leading-relaxed max-w-xs drop-shadow-sm">Nurturing young women through football excellence. From the streets of Nairobi to the world stage.</p>
                     <div className="flex items-center gap-3">
                         <SocialIcon href="https://www.instagram.com/vipawaladiescf?igsh=aHVucHNubTZldWZz" label="Instagram" bgColor="bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600">
                             <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
@@ -53,7 +53,7 @@ const Footer = () => (
                             { href: '/gallery', label: 'Gallery' },
                             { href: '/support', label: 'Membership' },
                         ].map((link) => (
-                            <li key={link.href}><Link href={link.href} className="text-white/70 hover:text-gold transition-colors text-fluid-sm">{link.label}</Link></li>
+                            <li key={link.href}><Link href={link.href} className="text-white hover:text-gold font-medium transition-colors text-fluid-sm">{link.label}</Link></li>
                         ))}
                     </ul>
                 </div>
@@ -61,24 +61,24 @@ const Footer = () => (
                 <div>
                     <h4 className="font-bold uppercase tracking-wider mb-5 text-fluid-sm">Training Hours</h4>
                     <ul className="space-y-3">
-                        <li className="flex items-start gap-3 text-white/70 text-fluid-sm"><Clock size={16} className="text-gold shrink-0 mt-0.5" /><span>Mon – Fri: 8:00 AM</span></li>
-                        <li className="flex items-start gap-3 text-white/70 text-fluid-sm"><Clock size={16} className="text-gold shrink-0 mt-0.5" /><span>Weekends: 9:00 AM – 6:00 PM</span></li>
+                        <li className="flex items-start gap-3 text-white font-medium text-fluid-sm"><Clock size={16} className="text-gold shrink-0 mt-0.5" /><span>Mon – Fri: 8:00 AM</span></li>
+                        <li className="flex items-start gap-3 text-white font-medium text-fluid-sm"><Clock size={16} className="text-gold shrink-0 mt-0.5" /><span>Weekends: 9:00 AM – 6:00 PM</span></li>
                     </ul>
                     <h4 className="font-bold uppercase tracking-wider mb-3 mt-6 text-fluid-sm">Grounds</h4>
                     <ul className="space-y-2">
-                        <li className="flex items-start gap-3 text-white/70 text-fluid-sm"><MapPin size={14} className="text-gold shrink-0 mt-0.5" /><span>NCC – Ngong Road</span></li>
-                        <li className="flex items-start gap-3 text-white/70 text-fluid-sm"><MapPin size={14} className="text-gold shrink-0 mt-0.5" /><span>Moi Girls' School Nairobi Complex</span></li>
-                        <li className="flex items-start gap-3 text-white/70 text-fluid-sm"><MapPin size={14} className="text-gold shrink-0 mt-0.5" /><span>Kilimani Primary Grounds</span></li>
+                        <li className="flex items-start gap-3 text-white font-medium text-fluid-sm"><MapPin size={14} className="text-gold shrink-0 mt-0.5" /><span>NCC – Ngong Road</span></li>
+                        <li className="flex items-start gap-3 text-white font-medium text-fluid-sm"><MapPin size={14} className="text-gold shrink-0 mt-0.5" /><span>Moi Girls' School Nairobi Complex</span></li>
+                        <li className="flex items-start gap-3 text-white font-medium text-fluid-sm"><MapPin size={14} className="text-gold shrink-0 mt-0.5" /><span>Kilimani Primary Grounds</span></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 className="font-bold uppercase tracking-wider mb-5 text-fluid-sm">Contact</h4>
                     <ul className="space-y-3">
-                        <li className="flex items-center gap-3 text-white/70 text-fluid-sm"><Phone size={16} className="text-gold shrink-0" /><a href="tel:+254727388550" className="hover:text-gold transition-colors">+254 727 388 550</a></li>
-                        <li className="flex items-center gap-3 text-white/70 text-fluid-sm"><Phone size={16} className="text-gold shrink-0" /><a href="tel:+254708981204" className="hover:text-gold transition-colors">+254 708 981 204</a></li>
-                        <li className="flex items-center gap-3 text-white/70 text-fluid-sm"><Phone size={16} className="text-gold shrink-0" /><a href="tel:+254717974149" className="hover:text-gold transition-colors">+254 717 974 149</a></li>
-                        <li className="flex items-center gap-3 text-white/70 text-fluid-sm"><Mail size={16} className="text-gold shrink-0" /><a href="mailto:vipawaladiescfk@gmail.com" className="hover:text-gold transition-colors">vipawaladiescfk@gmail.com</a></li>
+                        <li className="flex items-center gap-3 text-white font-medium text-fluid-sm"><Phone size={16} className="text-gold shrink-0" /><a href="tel:+254727388550" className="hover:text-gold transition-colors">+254 727 388 550</a></li>
+                        <li className="flex items-center gap-3 text-white font-medium text-fluid-sm"><Phone size={16} className="text-gold shrink-0" /><a href="tel:+254708981204" className="hover:text-gold transition-colors">+254 708 981 204</a></li>
+                        <li className="flex items-center gap-3 text-white font-medium text-fluid-sm"><Phone size={16} className="text-gold shrink-0" /><a href="tel:+254717974149" className="hover:text-gold transition-colors">+254 717 974 149</a></li>
+                        <li className="flex items-center gap-3 text-white font-medium text-fluid-sm"><Mail size={16} className="text-gold shrink-0" /><a href="mailto:vipawaladiescfk@gmail.com" className="hover:text-gold transition-colors">vipawaladiescfk@gmail.com</a></li>
                     </ul>
                 </div>
             </div>

@@ -32,7 +32,7 @@ const SupportContent = () => {
             <div className="container-custom text-center mb-16 sm:mb-20">
                 <span className="section-tag">Get Involved</span>
                 <h1 className="section-title">Support The Army</h1>
-                <p className="text-white/40 max-w-2xl mx-auto text-fluid-base">
+                <p className="text-white/80 max-w-2xl mx-auto text-fluid-base font-medium">
                     Join the movement. Whether through membership, donation, or sponsorship — your support drives Vipawa Ladies CF forward.
                 </p>
             </div>
@@ -55,7 +55,7 @@ const SupportContent = () => {
                             <item.icon size={24} />
                         </div>
                         <h3 className="text-fluid-lg font-bold uppercase mb-2">{item.title}</h3>
-                        <p className="text-white/40 text-fluid-sm mb-5">{item.desc}</p>
+                        <p className="text-white/70 text-fluid-sm mb-5 font-medium">{item.desc}</p>
                         <span className="btn-gold !py-2.5 !px-6 text-xs">{item.action}</span>
                     </motion.button>
                 ))}

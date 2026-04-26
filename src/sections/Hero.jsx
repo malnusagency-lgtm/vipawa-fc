@@ -137,7 +137,7 @@ const Hero = () => {
                         </span>
                     </h1>
 
-                    <p className="text-fluid-lg text-white/80 font-heading max-w-lg mb-10">
+                    <p className="text-fluid-lg text-white font-bold font-heading max-w-lg mb-10 drop-shadow-md">
                         Talent into Power. <br />Nurturing excellence since 2021.
                     </p>
 
@@ -173,18 +173,18 @@ const Hero = () => {
                     <div className="glass-card p-4 flex items-start gap-3">
                         <span className="text-gold text-lg">🕐</span>
                         <div>
-                            <h4 className="font-bold text-fluid-xs uppercase tracking-wider mb-1">Training Hours</h4>
-                            <p className="text-white/70 text-fluid-xs">Mon–Fri: 8:00 AM</p>
-                            <p className="text-white/70 text-fluid-xs">Weekends: 9:00 AM – 6:00 PM</p>
+                            <h4 className="font-black text-fluid-xs uppercase tracking-wider mb-1 text-gold">Training Hours</h4>
+                            <p className="text-white font-bold text-fluid-xs">Mon–Fri: 8:00 AM</p>
+                            <p className="text-white font-bold text-fluid-xs">Weekends: 9:00 AM – 6:00 PM</p>
                         </div>
                     </div>
                     <div className="glass-card p-4 flex items-start gap-3">
                         <span className="text-gold text-lg">📍</span>
                         <div>
-                            <h4 className="font-bold text-fluid-xs uppercase tracking-wider mb-1">Our Grounds</h4>
-                            <p className="text-white/70 text-fluid-xs">NCC – Ngong Road</p>
-                            <p className="text-white/70 text-fluid-xs">Moi Girls' School Complex</p>
-                            <p className="text-white/70 text-fluid-xs">Kilimani Primary Grounds</p>
+                            <h4 className="font-black text-fluid-xs uppercase tracking-wider mb-1 text-gold">Our Grounds</h4>
+                            <p className="text-white font-bold text-fluid-xs">NCC – Ngong Road</p>
+                            <p className="text-white font-bold text-fluid-xs">Moi Girls' School Complex</p>
+                            <p className="text-white font-bold text-fluid-xs">Kilimani Primary Grounds</p>
                         </div>
                     </div>
                 </motion.div>

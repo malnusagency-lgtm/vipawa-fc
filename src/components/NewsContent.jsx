@@ -33,7 +33,7 @@ const NewsContent = () => {
                                     <Calendar size={13} aria-hidden="true" /><span>{item.date}</span>
                                 </div>
                                 <h3 className="text-fluid-lg font-bold mb-3 leading-tight group-hover:text-gold transition-colors">{item.title}</h3>
-                                <p className="text-white/50 text-fluid-sm line-clamp-3 mb-5">{item.summary}</p>
+                                <p className="text-white/80 text-fluid-sm line-clamp-3 mb-5 font-medium">{item.summary}</p>
                                 <span className="text-fluid-xs font-bold uppercase tracking-[0.15em] text-white/40 group-hover:text-gold transition-colors border-b border-transparent group-hover:border-gold/30 pb-0.5">Read Article</span>
                             </div>
                         </motion.article>

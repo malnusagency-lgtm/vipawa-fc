@@ -46,7 +46,7 @@ const SocialProof = () => {
                     <div className="max-w-2xl mx-auto text-center">
                         <span className="section-tag">Stay Updated</span>
                         <h2 className="text-fluid-3xl font-black uppercase mb-4">Join the Vipawa Army</h2>
-                        <p className="text-white/80 text-fluid-sm mb-8 max-w-md mx-auto">
+                        <p className="text-white font-bold text-fluid-sm mb-8 max-w-md mx-auto drop-shadow-lg">
                             Get match updates, news, and exclusive content delivered to your inbox.
                         </p>
                         <form
