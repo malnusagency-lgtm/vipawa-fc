@@ -76,7 +76,7 @@ export const fixtures = [
 
 export const organization = {
     leadership: [
-        { name: 'Catherine Mogu', role: 'Chairperson', image: '/images/gallery/gallery-1.jpeg' },
+        { name: 'Cathy Magu', role: 'Chairperson', image: '/images/gallery/gallery-1.jpeg' },
         { name: 'Humprey Aluanga', role: 'Brand Ambassador', image: '/images/leadership/Humprey Aluanga.png' },
     ],
     management: [
@@ -89,10 +89,12 @@ export const organization = {
         { name: 'Ramadhan Ochieng', role: 'Head Coach (Mariga)', image: '/images/leadership/MARIGA.jpeg' },
         { name: 'Boniface Otieno', role: 'Asst. Coach (Bonny)', image: '/images/leadership/Coach Bonny.jpeg' },
         { name: 'Brandon Nyongesa', role: 'Asst. Coach (Brandon)', image: '/images/leadership/Brandon.jpeg' },
+        { name: 'Shirleen Mbuto', role: 'Asst. Coach', image: '/images/news/graduating news pic.jpeg' },
     ],
     squad: [
         // GOALKEEPERS
         { id: 14, name: 'Valary Akinyi', number: 1, position: 'GK', image: '/images/squad/player-14.jpeg' },
+        { id: 19, name: 'Vivian Chiteri', number: 20, position: 'GK', image: '/images/squad/Vivian Chiteri - Goalkeeper.png' },
         // DEFENDERS
         { id: 7, name: 'Faith Ouma', number: 2, position: 'DEF', image: '/images/squad/player-7.jpeg' },
         { id: 1, name: 'Abigael', number: 3, position: 'DEF', image: '/images/squad/player-1.jpeg' },
@@ -101,22 +103,42 @@ export const organization = {
         { id: 8, name: 'Fanice', number: 6, position: 'DEF', image: '/images/squad/player-8.jpeg' },
         { id: 11, name: 'Maureen', number: 12, position: 'DEF', image: '/images/squad/player-11.jpeg' },
         { id: 17, name: 'Volenter', number: 15, position: 'DEF', image: '/images/squad/player-17.jpeg' },
+        { id: 20, name: 'Dolvin Chiteri', number: 5, position: 'DEF', image: '/images/squad/Dolvin Chiteri.png' },
         // MIDFIELDERS
         { id: 4, name: 'Celine', number: 8, position: 'MID', image: '/images/squad/player-4.jpeg' },
         { id: 5, name: 'Divinah', number: 10, position: 'MID', image: '/images/squad/player-5.jpeg' },
         { id: 10, name: 'Malia', number: 14, position: 'MID', image: '/images/squad/player-10.jpeg' },
         { id: 13, name: 'Shernny', number: 16, position: 'MID', image: '/images/squad/player-13.jpeg' },
         { id: 18, name: 'Wilcaster', number: 18, position: 'MID', image: '/images/squad/player-18.jpeg' },
+        { id: 21, name: 'Bezawaq', number: 21, position: 'MID', image: '/images/squad/Bezawaq - Midfield.png' },
         // FORWARDS
         { id: 2, name: "Achieng'", number: 9, position: 'FWD', image: '/images/squad/player-2.jpeg' },
         { id: 12, name: 'Mirriam', number: 7, position: 'FWD', image: '/images/squad/player-12.png' },
         { id: 9, name: 'Maggie', number: 11, position: 'FWD', image: '/images/squad/player-9.jpeg' },
         { id: 15, name: 'Veronica', number: 17, position: 'FWD', image: '/images/squad/player-15.jpeg' },
         { id: 16, name: 'Vicky', number: 19, position: 'FWD', image: '/images/squad/player-16.jpeg' },
+        { id: 22, name: 'Gentrix', number: 13, position: 'FWD', image: '/images/squad/Gentrix Striker.png' },
+        { id: 23, name: 'Tiffany', number: 23, position: 'FWD', image: '/images/squad/Tiffany - Striker.jpeg' },
     ]
 };
 
 export const news = [
+    {
+        id: 4,
+        title: 'Shirleen Mbuto Graduates as a Professional Coach',
+        category: 'Development',
+        date: 'Jan 22, 2026',
+        image: '/images/news/graduating news pic.jpeg',
+        summary: 'A proud moment for the club as our own Shirleen Mbuto officially joins the technical bench after successful graduation.'
+    },
+    {
+        id: 5,
+        title: 'Vipawa Secures Top Talent from Zetech',
+        category: 'Transfer',
+        date: 'Jan 20, 2026',
+        image: '/images/news/signing news pic.jpeg',
+        summary: 'Welcoming Vivian Chiteri (GK) and Dolvin Chiteri (DEF) to the squad. A significant boost to our defensive line.'
+    },
     {
         id: 1,
         title: 'Vipawa Secures Semifinal Spot in BingwaFest Nairobi',

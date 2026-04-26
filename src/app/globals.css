@@ -2,10 +2,10 @@
 
 @theme {
   /* ─── Premium Color Palette ─── */
-  --color-primary: #070b14;
-  --color-primary-900: #0c1220;
-  --color-primary-800: #111827;
-  --color-primary-700: #1a2236;
+  --color-primary: #0f2e66;
+  --color-primary-900: #0b214a;
+  --color-primary-800: #1a3c7d;
+  --color-primary-700: #254b94;
 
   --color-accent-blue: #2563eb;
   --color-accent-blue-glow: #3b82f6;
@@ -19,8 +19,8 @@
   --color-gold-light: #dfc06e;
   --color-gold-dark: #a68a2e;
 
-  --color-surface: #0f1521;
-  --color-surface-light: #161e2e;
+  --color-surface: #163b7d;
+  --color-surface-light: #1e468f;
 
   /* ─── Fonts ─── */
   --font-heading: var(--font-outfit), sans-serif;
@@ -78,11 +78,11 @@
   }
 
   .glass-card {
-    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-2xl shadow-glass;
+    @apply bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-glass transition-colors duration-300 hover:bg-white/15;
   }
 
   .glass-card-elevated {
-    @apply bg-white/[0.06] backdrop-blur-xl border border-white/[0.1] rounded-2xl shadow-elevated;
+    @apply bg-white/[0.15] backdrop-blur-xl border border-white/25 rounded-2xl shadow-elevated transition-colors duration-300 hover:bg-white/20;
   }
 
   .btn-primary {
