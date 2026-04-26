@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 
 const SocialIcon = ({ href, label, bgColor, children }) => (
@@ -11,8 +12,13 @@ const Footer = () => (
     <footer className="bg-black text-white pt-20 sm:pt-24 pb-10 sm:pb-12 overflow-hidden relative" role="contentinfo">
         {/* Footer Background Layer */}
         <div className="absolute inset-0 z-0">
-            <div 
-                className="absolute inset-0 bg-[url('/images/backgrounds/footer%20background.png')] bg-cover bg-center"
+            <Image 
+                src="/images/backgrounds/footer-background.png" 
+                alt="" 
+                fill 
+                className="object-cover opacity-100" 
+                sizes="100vw"
+                quality={75}
             />
         </div>
         <div className="absolute inset-0 bg-primary/60 z-[1]" />
