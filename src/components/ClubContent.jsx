@@ -105,33 +105,44 @@ const ClubContent = ({ organization }) => {
                 </section>
 
                 {/* The Squad — Gallery Format */}
-                <section aria-labelledby="squad-heading">
-                    <div className="flex items-end justify-between mb-8 sm:mb-12 border-b border-white/[0.06] pb-4 sm:pb-6">
-                        <div>
-                            <span className="section-tag !mb-1">First Team</span>
-                            <h2 id="squad-heading" className="text-fluid-3xl font-black uppercase">The Squad</h2>
-                        </div>
-                        <div className="text-right hidden sm:block">
-                            <div className="text-fluid-3xl font-black text-white/[0.06]">2026</div>
-                            <div className="text-fluid-xs uppercase tracking-[0.2em] text-white/30">Season</div>
-                        </div>
+                <section className="relative -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 sm:py-24 overflow-hidden" aria-labelledby="squad-heading">
+                    {/* Fixed Background Layer */}
+                    <div className="absolute inset-0 z-0">
+                        <div 
+                            className="absolute inset-0 bg-[url('/images/backgrounds/the%20squad%20background%20image.jpeg')] bg-cover bg-center"
+                            style={{ backgroundAttachment: 'fixed' }}
+                        />
+                        <div className="absolute inset-0 bg-primary/90" />
                     </div>
 
-                    {['GK', 'DEF', 'MID', 'FWD'].map((pos) => {
-                        const players = organization.squad.filter(p => p.position === pos);
-                        if (!players.length) return null;
-                        return (
-                            <div key={pos} className="mb-12">
-                                <h3 className="text-fluid-sm font-bold uppercase tracking-[0.2em] text-gold mb-5 flex items-center gap-3">
-                                    <span className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold text-xs font-black">{players.length}</span>
-                                    {posNames[pos]}
-                                </h3>
-                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
-                                    {players.map(player => <PlayerGalleryCard key={player.id} player={player} />)}
-                                </div>
+                    <div className="relative z-10">
+                        <div className="flex items-end justify-between mb-8 sm:mb-12 border-b border-white/[0.06] pb-4 sm:pb-6">
+                            <div>
+                                <span className="section-tag !mb-1">First Team</span>
+                                <h2 id="squad-heading" className="text-fluid-3xl font-black uppercase">The Squad</h2>
                             </div>
-                        );
-                    })}
+                            <div className="text-right hidden sm:block">
+                                <div className="text-fluid-3xl font-black text-white/[0.06]">2026</div>
+                                <div className="text-fluid-xs uppercase tracking-[0.2em] text-white/30">Season</div>
+                            </div>
+                        </div>
+
+                        {['GK', 'DEF', 'MID', 'FWD'].map((pos) => {
+                            const players = organization.squad.filter(p => p.position === pos);
+                            if (!players.length) return null;
+                            return (
+                                <div key={pos} className="mb-12">
+                                    <h3 className="text-fluid-sm font-bold uppercase tracking-[0.2em] text-gold mb-5 flex items-center gap-3">
+                                        <span className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold text-xs font-black">{players.length}</span>
+                                        {posNames[pos]}
+                                    </h3>
+                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+                                        {players.map(player => <PlayerGalleryCard key={player.id} player={player} />)}
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
                 </section>
             </div>
         </div>

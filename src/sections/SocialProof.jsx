@@ -26,7 +26,14 @@ const SocialProof = () => {
             </section>
 
             {/* Newsletter CTA */}
-            <section className="section-padding bg-gradient-to-b from-surface to-primary noise relative" aria-label="Newsletter signup">
+            <section className="section-padding relative overflow-hidden" aria-label="Newsletter signup">
+                {/* Fixed Background Layer */}
+                <div 
+                    className="absolute inset-0 z-0 bg-[url('/images/backgrounds/stay%20updated%20section%20background.jpeg')] bg-cover bg-center"
+                    style={{ backgroundAttachment: 'fixed' }}
+                />
+                <div className="absolute inset-0 bg-primary/90 z-[1]" />
+
                 <div className="container-custom relative z-10">
                     <div className="max-w-2xl mx-auto text-center">
                         <span className="section-tag">Stay Updated</span>
@@ -45,7 +52,7 @@ const SocialProof = () => {
                                     id="newsletter-email"
                                     type="email"
                                     placeholder="your@email.com"
-                                    className="w-full bg-white/[0.04] border border-white/[0.08] rounded-full pl-10 pr-4 py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-gold transition-colors"
+                                    className="w-full bg-white/[0.04] border border-white/[0.08] rounded-full pl-10 pr-4 py-3.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-gold transition-colors font-bold"
                                     required
                                 />
                             </div>

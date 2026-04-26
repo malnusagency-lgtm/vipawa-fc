@@ -107,10 +107,19 @@ const SupportContent = () => {
             </section>
 
             {/* Sponsorship Tiers */}
-            <section id="sponsorship" className="bg-surface/50 section-padding scroll-mt-20 noise relative" aria-labelledby="sponsor-heading">
+            <section id="sponsorship" className="section-padding scroll-mt-20 relative overflow-hidden" aria-labelledby="sponsor-heading">
+                {/* Fixed Background Layer */}
+                <div className="absolute inset-0 z-0">
+                    <div 
+                        className="absolute inset-0 bg-[url('/images/backgrounds/join%20us%20background%20image.jpeg')] bg-cover bg-center"
+                        style={{ backgroundAttachment: 'fixed' }}
+                    />
+                    <div className="absolute inset-0 bg-primary/90" />
+                </div>
+
                 <div className="container-custom relative z-10">
                     <div className="text-center mb-12">
-                        <div className="w-14 h-14 rounded-full bg-gold/10 text-gold flex items-center justify-center mx-auto mb-5"><Handshake size={26} /></div>
+                        <div className="w-14 h-14 rounded-full bg-gold/10 text-gold flex items-center justify-center mx-auto mb-5 group-hover:shadow-glow-gold transition-all duration-500"><Handshake size={26} /></div>
                         <h2 id="sponsor-heading" className="text-fluid-3xl font-black uppercase mb-4">Become a Sponsor</h2>
                         <p className="text-white/40 max-w-xl mx-auto text-fluid-sm">Support the team at different levels. Every contribution drives our mission forward.</p>
                     </div>

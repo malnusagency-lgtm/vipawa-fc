@@ -8,11 +8,13 @@ const SocialIcon = ({ href, label, bgColor, children }) => (
 );
 
 const Footer = () => (
-    <footer className="bg-black/95 text-white pt-20 sm:pt-24 pb-10 sm:pb-12 overflow-hidden relative noise" role="contentinfo">
-        <div className="absolute inset-0 z-0 pointer-events-none">
-            <div className="absolute top-0 right-0 w-80 h-80 bg-gold/[0.06] rounded-full blur-[120px]" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent-blue/[0.04] rounded-full blur-[120px]" />
-        </div>
+    <footer className="bg-black text-white pt-20 sm:pt-24 pb-10 sm:pb-12 overflow-hidden relative" role="contentinfo">
+        {/* Kits Background Layer */}
+        <div 
+            className="absolute inset-0 z-0 bg-[url('/images/merchandise/kits-collection.jpeg')] bg-cover bg-center"
+            style={{ backgroundAttachment: 'fixed' }}
+        />
+        <div className="absolute inset-0 bg-primary/85 z-[1]" />
 
         <div className="container-custom relative z-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 mb-14">
