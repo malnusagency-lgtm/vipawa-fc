@@ -99,9 +99,8 @@ const Hero = () => {
         <section className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden noise" aria-label="Hero">
             {/* Background */}
             <div className="absolute inset-0 z-0 overflow-hidden" style={{ clipPath: 'inset(0 0 0 0)' }}>
-                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent z-10" />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/40 to-transparent z-10" />
-                <div className="fixed inset-0 w-full h-full will-change-transform" style={{ transform: 'translateZ(0)' }}>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary to-transparent z-10" />
+                <div className="absolute sm:fixed inset-0 w-full h-full">
                     <Image 
                         src="/images/gallery/gallery-3.jpeg" 
                         alt="Vipawa Ladies CF" 

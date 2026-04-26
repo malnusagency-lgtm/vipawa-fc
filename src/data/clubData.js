@@ -103,7 +103,6 @@ export const organization = {
         { id: 8, name: 'Fanice', number: 6, position: 'DEF', image: '/images/squad/player-8.jpeg' },
         { id: 11, name: 'Maureen', number: 12, position: 'DEF', image: '/images/squad/player-11.jpeg' },
         { id: 17, name: 'Volenter', number: 15, position: 'DEF', image: '/images/squad/player-17.jpeg' },
-        { id: 20, name: 'Dolvin Chiteri', number: 5, position: 'DEF', image: '/images/squad/Dolvin-Chiteri.png' },
         // MIDFIELDERS
         { id: 4, name: 'Celine', number: 8, position: 'MID', image: '/images/squad/player-4.jpeg' },
         { id: 5, name: 'Divinah', number: 10, position: 'MID', image: '/images/squad/player-5.jpeg' },
