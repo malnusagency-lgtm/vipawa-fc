@@ -27,12 +27,11 @@ const SocialProof = () => {
 
             {/* Newsletter CTA */}
             <section className="section-padding relative overflow-hidden" aria-label="Newsletter signup">
-                {/* Fixed Background Layer */}
                 <div 
                     className="absolute inset-0 z-0 bg-[url('/images/backgrounds/stay%20updated%20section%20background.jpeg')] bg-cover bg-center"
                     style={{ backgroundAttachment: 'fixed' }}
                 />
-                <div className="absolute inset-0 bg-primary/90 z-[1]" />
+                <div className="absolute inset-0 bg-primary/3 z-[1]" />
 
                 <div className="container-custom relative z-10">
                     <div className="max-w-2xl mx-auto text-center">
