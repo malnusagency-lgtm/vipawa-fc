@@ -114,109 +114,147 @@ const Hero = () => {
             </div>
 
             {/* Content */}
-            <div className="container-custom relative z-20 py-32">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                >
-                    <motion.span
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="section-tag !mb-6"
-                    >
-                        Est. 2021 • Nairobi, Kenya
-                    </motion.span>
+            <div className="container-custom relative z-20 py-24 sm:py-32 lg:py-40">
+                <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-12 lg:gap-16">
+                    {/* Left Column: Text Content & Stats */}
+                    <div className="flex-1 max-w-2xl">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                        >
+                            <motion.span
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 }}
+                                className="section-tag !mb-6"
+                            >
+                                Est. 2021 • Nairobi, Kenya
+                            </motion.span>
 
-                    <h1 className="text-fluid-hero font-black uppercase tracking-tighter leading-[0.9] mb-6">
-                        Vipawa <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold">
-                            Ladies CF
-                        </span>
-                    </h1>
+                            <h1 className="text-fluid-hero font-black uppercase tracking-tighter leading-[0.9] mb-6">
+                                Vipawa <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold">
+                                    Ladies CF
+                                </span>
+                            </h1>
 
-                    <p className="text-fluid-lg text-white font-bold font-heading max-w-lg mb-10 drop-shadow-md">
-                        Talent into Power. <br />Nurturing excellence since 2021.
-                    </p>
+                            <p className="text-fluid-lg text-white font-bold font-heading max-w-lg mb-10 drop-shadow-md">
+                                Talent into Power. <br />Nurturing excellence since 2021.
+                            </p>
 
-                    <div className="flex flex-wrap gap-4">
-                        <Link href="/club" className="btn-primary group">
-                            The Club <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                        <Link href="/matches" className="btn-secondary">
-                            Fixtures
-                        </Link>
+                            <div className="flex flex-wrap gap-4">
+                                <Link href="/club" className="btn-primary group">
+                                    The Club <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                                <Link href="/matches" className="btn-secondary">
+                                    Fixtures
+                                </Link>
+                            </div>
+                        </motion.div>
+
+                        {/* Stats Row */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.8, duration: 0.8 }}
+                            className="mt-12 sm:mt-16 flex gap-8 sm:gap-12 md:gap-16"
+                        >
+                            <StatCounter end={18} label="Players" suffix="+" />
+                            <StatCounter end={26} label="Fixtures" />
+                            <StatCounter end={4} label="Years" suffix="+" />
+                        </motion.div>
+
+                        {/* Info Strip */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 1, duration: 0.6 }}
+                            className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4"
+                        >
+                            <div className="glass-card p-4 flex items-start gap-3">
+                                <span className="text-gold text-lg">🕐</span>
+                                <div>
+                                    <h4 className="font-black text-fluid-xs uppercase tracking-wider mb-1 text-gold">Training Hours</h4>
+                                    <p className="text-white font-bold text-fluid-xs">Mon–Fri: 8:00 AM</p>
+                                    <p className="text-white font-bold text-fluid-xs">Weekends: 9:00 AM – 6:00 PM</p>
+                                </div>
+                            </div>
+                            <div className="glass-card p-4 flex items-start gap-3">
+                                <span className="text-gold text-lg">📍</span>
+                                <div>
+                                    <h4 className="font-black text-fluid-xs uppercase tracking-wider mb-1 text-gold">Our Grounds</h4>
+                                    <p className="text-white font-bold text-fluid-xs">NCC – Ngong Road</p>
+                                    <p className="text-white font-bold text-fluid-xs">Moi Girls' School Complex</p>
+                                    <p className="text-white font-bold text-fluid-xs">Kilimani Primary Grounds</p>
+                                </div>
+                            </div>
+                        </motion.div>
                     </div>
-                </motion.div>
 
-                {/* Stats Row */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8, duration: 0.8 }}
-                    className="mt-16 sm:mt-20 flex gap-8 sm:gap-12 md:gap-16"
-                >
-                    <StatCounter end={18} label="Players" suffix="+" />
-                    <StatCounter end={26} label="Fixtures" />
-                    <StatCounter end={4} label="Years" suffix="+" />
-                </motion.div>
+                    {/* Right Column: Next Match Card */}
+                    {nextMatch && (
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 1.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                            className="w-full sm:max-w-sm lg:max-w-md xl:w-[350px] shrink-0"
+                        >
+                            <div className="glass-card-elevated p-6 sm:p-8 relative overflow-hidden group">
+                                {/* Subtle decorative background element */}
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 blur-[60px] -translate-y-1/2 translate-x-1/2 group-hover:bg-gold/10 transition-colors" />
+                                
+                                <div className="flex items-center gap-2 mb-6">
+                                    <span className="w-2 h-2 rounded-full bg-accent-red animate-ping" />
+                                    <span className="text-xs font-bold tracking-[0.3em] uppercase text-accent-red">Next Match</span>
+                                </div>
+                                
+                                <div className="space-y-6 mb-8">
+                                    <div className="flex justify-between items-center gap-6">
+                                        <div className="flex flex-col items-center gap-2 flex-1">
+                                            <div className="w-12 h-12 rounded-full bg-primary/40 border border-white/10 flex items-center justify-center font-black text-gold text-lg">V</div>
+                                            <span className="font-black uppercase text-fluid-base tracking-tighter">Vipawa</span>
+                                        </div>
+                                        <span className="text-white/30 text-xs font-heading font-black italic">VS</span>
+                                        <div className="flex flex-col items-center gap-2 flex-1">
+                                            <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center font-black text-white/40 text-lg">{nextMatch.opponent[0]}</div>
+                                            <span className="font-black uppercase text-fluid-base tracking-tighter text-center line-clamp-1" title={nextMatch.opponent}>{nextMatch.opponent}</span>
+                                        </div>
+                                    </div>
+                                </div>
 
-                {/* Info Strip */}
-                <motion.div
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1, duration: 0.6 }}
-                    className="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl"
-                >
-                    <div className="glass-card p-4 flex items-start gap-3">
-                        <span className="text-gold text-lg">🕐</span>
-                        <div>
-                            <h4 className="font-black text-fluid-xs uppercase tracking-wider mb-1 text-gold">Training Hours</h4>
-                            <p className="text-white font-bold text-fluid-xs">Mon–Fri: 8:00 AM</p>
-                            <p className="text-white font-bold text-fluid-xs">Weekends: 9:00 AM – 6:00 PM</p>
-                        </div>
-                    </div>
-                    <div className="glass-card p-4 flex items-start gap-3">
-                        <span className="text-gold text-lg">📍</span>
-                        <div>
-                            <h4 className="font-black text-fluid-xs uppercase tracking-wider mb-1 text-gold">Our Grounds</h4>
-                            <p className="text-white font-bold text-fluid-xs">NCC – Ngong Road</p>
-                            <p className="text-white font-bold text-fluid-xs">Moi Girls' School Complex</p>
-                            <p className="text-white font-bold text-fluid-xs">Kilimani Primary Grounds</p>
-                        </div>
-                    </div>
-                </motion.div>
+                                {/* Countdown */}
+                                <div className="grid grid-cols-4 gap-3 py-6 border-y border-white/[0.08]">
+                                    <CountdownUnit value={countdown.days} label="Days" />
+                                    <CountdownUnit value={countdown.hours} label="Hrs" />
+                                    <CountdownUnit value={countdown.mins} label="Min" />
+                                    <CountdownUnit value={countdown.secs} label="Sec" />
+                                </div>
+                                
+                                <div className="mt-6 space-y-2">
+                                    <div className="flex items-center gap-2 text-white/60">
+                                        <span className="text-gold text-xs">📅</span>
+                                        <span className="text-[11px] font-bold uppercase tracking-wider">
+                                            {new Date(nextMatch.date.split('/').reverse().join('-')).toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}
+                                        </span>
+                                    </div>
+                                    <div className="flex items-center gap-2 text-white/60">
+                                        <span className="text-gold text-xs">🕒</span>
+                                        <span className="text-[11px] font-bold uppercase tracking-wider">{nextMatch.time} KET</span>
+                                    </div>
+                                    <div className="flex items-center gap-2 text-white/60">
+                                        <span className="text-gold text-xs">📍</span>
+                                        <span className="text-[11px] font-bold uppercase tracking-wider line-clamp-1">{nextMatch.venue}</span>
+                                    </div>
+                                </div>
 
-                {/* Next Match Card (Flow on Mobile, Absolute on Desktop) */}
-                {nextMatch && (
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 1.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="mt-12 mb-16 xl:absolute xl:bottom-12 xl:right-16 xl:mt-0 xl:mb-0 glass-card-elevated p-5 sm:p-6 w-full sm:max-w-sm lg:max-w-md xl:w-[320px] xl:max-w-none z-20"
-                    >
-                        <div className="flex items-center gap-2 mb-3">
-                            <span className="w-2 h-2 rounded-full bg-accent-red animate-ping" />
-                            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-accent-red">Next Match</span>
-                        </div>
-                        <div className="flex justify-between items-center gap-4 mb-4">
-                            <span className="font-black uppercase text-fluid-base">Vipawa</span>
-                            <span className="text-white/50 text-xs font-heading">VS</span>
-                            <span className="font-black uppercase text-fluid-base text-right max-w-[120px] truncate" title={nextMatch.opponent}>{nextMatch.opponent}</span>
-                        </div>
-                        {/* Countdown */}
-                        <div className="grid grid-cols-4 gap-2 pt-3 border-t border-white/[0.06]">
-                            <CountdownUnit value={countdown.days} label="Days" />
-                            <CountdownUnit value={countdown.hours} label="Hrs" />
-                            <CountdownUnit value={countdown.mins} label="Min" />
-                            <CountdownUnit value={countdown.secs} label="Sec" />
-                        </div>
-                        <p className="text-[10px] text-white/60 mt-3 text-center tracking-wider">
-                            {new Date(nextMatch.date.split('/').reverse().join('-')).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} • {nextMatch.time} • {nextMatch.venue}
-                        </p>
-                    </motion.div>
-                )}
+                                <Link href="/matches" className="mt-8 btn-gold w-full justify-center text-xs tracking-widest py-4">
+                                    Match Details
+                                </Link>
+                            </div>
+                        </motion.div>
+                    )}
+                </div>
             </div>
         </section>
     );
