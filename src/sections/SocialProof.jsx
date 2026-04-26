@@ -1,9 +1,10 @@
 'use client';
 
 import { Mail } from 'lucide-react';
+import Image from 'next/image';
 
 const SocialProof = () => {
-    const slogans = ['Kick Like A Queen', 'Talent Into Power', 'Nairobi to the World', 'Empower a Girl', 'Inspire a Generation'];
+    const slogans = ['Kick Like A Queen', 'Talent Into Power', 'Nurturing Talents', 'Nairobi to the World', 'Empower a Girl', 'Inspire a Generation'];
 
     return (
         <>
@@ -28,12 +29,18 @@ const SocialProof = () => {
             {/* Newsletter CTA */}
             <section className="section-padding relative overflow-hidden" aria-label="Newsletter signup">
                 <div className="absolute inset-0 z-0 overflow-hidden" style={{ clipPath: 'inset(0 0 0 0)' }}>
-                    <div 
-                        className="fixed inset-0 w-full h-full bg-[url('/images/backgrounds/stay%20updated%20section%20background.jpeg')] bg-cover bg-center will-change-transform"
-                        style={{ transform: 'translateZ(0)' }}
-                    />
+                    <div className="fixed inset-0 w-full h-full will-change-transform" style={{ transform: 'translateZ(0)' }}>
+                        <Image 
+                            src="/images/backgrounds/stay-updated-section-background.jpeg" 
+                            alt="Vipawa Army" 
+                            fill 
+                            className="object-cover" 
+                            sizes="100vw"
+                            quality={75}
+                        />
+                    </div>
                 </div>
-                <div className="absolute inset-0 bg-primary/7 z-[1]" />
+                <div className="absolute inset-0 bg-primary/13 z-[1]" />
 
                 <div className="container-custom relative z-10">
                     <div className="max-w-2xl mx-auto text-center">

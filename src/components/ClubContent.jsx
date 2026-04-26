@@ -5,6 +5,8 @@ import Image from 'next/image';
 
 const HierarchyCard = ({ member, type }) => {
     const isLeader = type === 'leader';
+    const initials = member.name.split(' ').map(n => n[0]).join('').toUpperCase();
+    
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -12,8 +14,12 @@ const HierarchyCard = ({ member, type }) => {
             viewport={{ once: true }}
             className={`glass-card p-5 sm:p-6 flex flex-col items-center text-center group hover:translate-y-[-4px] hover:shadow-elevated transition-all duration-500 ${isLeader ? 'border-gold/20 bg-gold/[0.03]' : ''}`}
         >
-            <div className={`relative mb-4 sm:mb-5 rounded-full overflow-hidden border-2 ${isLeader ? 'w-28 h-28 sm:w-36 sm:h-36 border-gold/50' : 'w-20 h-20 sm:w-24 sm:h-24 border-white/10'} transition-all duration-500 group-hover:border-gold/60`}>
-                <Image src={member.image} alt={member.name} fill className="object-cover object-[center_15%] transition-transform duration-500 group-hover:scale-110" sizes={isLeader ? "144px" : "96px"} />
+            <div className={`relative mb-4 sm:mb-5 rounded-full overflow-hidden border-2 flex items-center justify-center ${isLeader ? 'w-28 h-28 sm:w-36 sm:h-36 border-gold/50' : 'w-20 h-20 sm:w-24 sm:h-24 border-white/10'} transition-all duration-500 group-hover:border-gold/60 bg-surface`}>
+                {member.image ? (
+                    <Image src={member.image} alt={member.name} fill className="object-cover object-[center_15%] transition-transform duration-500 group-hover:scale-110" sizes={isLeader ? "144px" : "96px"} />
+                ) : (
+                    <span className={`font-black tracking-tighter text-gold/40 ${isLeader ? 'text-4xl' : 'text-2xl'}`}>{initials}</span>
+                )}
             </div>
             <h3 className={`font-black uppercase mb-1 ${isLeader ? 'text-fluid-lg' : 'text-fluid-base'}`}>{member.name}</h3>
             <p className="text-fluid-xs font-bold uppercase tracking-[0.15em] text-gold">{member.role}</p>
@@ -38,7 +44,7 @@ const PlayerGalleryCard = ({ player }) => (
                 sizes="(max-width: 640px) 45vw, (max-width: 768px) 30vw, (max-width: 1024px) 22vw, 200px"
             />
             {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
 
             {/* Jersey number badge */}
             <div className="absolute top-3 right-3 w-9 h-9 rounded-full bg-gold/90 text-primary flex items-center justify-center font-heading font-black text-sm shadow-lg">
@@ -73,33 +79,31 @@ const ClubContent = ({ organization }) => {
                 {/* Leadership */}
                 <section className="mb-16 sm:mb-24 relative" aria-labelledby="leadership-heading">
                     <div className="absolute left-1/2 -translate-x-1/2 top-0 -translate-y-1/2 text-[50px] sm:text-[80px] md:text-[140px] font-black text-white/[0.03] whitespace-nowrap pointer-events-none select-none" aria-hidden="true">LEADERSHIP</div>
-                    <h2 id="leadership-heading" className="text-fluid-xl font-bold uppercase text-center mb-8 sm:mb-12 relative z-10">Board & Directors</h2>
+                    <h2 id="leadership-heading" className="text-fluid-xl font-bold uppercase text-center mb-8 sm:mb-12 relative z-10">Club Leadership</h2>
                     <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
                         {organization.leadership.map((member, idx) => (
                             <HierarchyCard key={idx} member={member} type="leader" />
                         ))}
                     </div>
                 </section>
-
-                {/* Management, Communication & Technical */}
+ 
+                {/* Management & Technical */}
                 <section className="mb-16 sm:mb-24" aria-labelledby="staff-heading">
-                    <h2 id="staff-heading" className="text-fluid-xl font-bold uppercase text-center mb-8 sm:mb-12">Technical Staff & Management</h2>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto mb-10">
-                        <div className="space-y-4">
-                            <h3 className="text-fluid-xs font-bold uppercase tracking-[0.2em] text-white/30 text-center border-b border-white/[0.06] pb-4">Management</h3>
-                            {organization.management.map((m, i) => <HierarchyCard key={i} member={m} />)}
+                    <h2 id="staff-heading" className="text-fluid-xl font-bold uppercase text-center mb-12 sm:mb-16">Club Management & Technical Staff</h2>
+ 
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto mb-16">
+                        <div className="space-y-6">
+                            <h3 className="text-fluid-xs font-bold uppercase tracking-[0.2em] text-white/30 text-center border-b border-white/[0.06] pb-4">Executive Management</h3>
+                            <div className="grid gap-6">
+                                {organization.management.map((m, i) => <HierarchyCard key={i} member={m} />)}
+                                {organization.communication?.map((m, i) => <HierarchyCard key={i} member={m} />)}
+                            </div>
                         </div>
-                        <div className="space-y-4">
-                            <h3 className="text-fluid-xs font-bold uppercase tracking-[0.2em] text-white/30 text-center border-b border-white/[0.06] pb-4">Communication</h3>
-                            {organization.communication?.map((m, i) => <HierarchyCard key={i} member={m} />)}
-                        </div>
-                    </div>
-
-                    <div className="max-w-5xl mx-auto">
-                        <h3 className="text-fluid-xs font-bold uppercase tracking-[0.2em] text-white/30 text-center border-b border-white/[0.06] pb-4 mb-6">Coaching</h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
-                            {organization.technical.map((m, i) => <HierarchyCard key={i} member={m} />)}
+                        <div className="space-y-6">
+                            <h3 className="text-fluid-xs font-bold uppercase tracking-[0.2em] text-white/30 text-center border-b border-white/[0.06] pb-4">Coaching Team</h3>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                {organization.technical.map((m, i) => <HierarchyCard key={i} member={m} />)}
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -108,10 +112,16 @@ const ClubContent = ({ organization }) => {
                 <section className="relative -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 sm:py-24 overflow-hidden" aria-labelledby="squad-heading">
                     {/* Fixed Background Layer */}
                     <div className="absolute inset-0 z-0 overflow-hidden" style={{ clipPath: 'inset(0 0 0 0)' }}>
-                        <div 
-                            className="fixed inset-0 w-full h-full bg-[url('/images/backgrounds/the%20squad%20background%20image.jpeg')] bg-cover bg-center will-change-transform"
-                            style={{ transform: 'translateZ(0)' }}
-                        />
+                        <div className="fixed inset-0 w-full h-full will-change-transform" style={{ transform: 'translateZ(0)' }}>
+                            <Image 
+                                src="/images/backgrounds/the-squad-background-image.jpeg" 
+                                alt="The Squad" 
+                                fill 
+                                className="object-cover" 
+                                sizes="100vw"
+                                quality={75}
+                            />
+                        </div>
                     </div>
                     <div className="absolute inset-0 bg-primary/90 z-[1]" />
 

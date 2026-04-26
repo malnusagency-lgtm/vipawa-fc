@@ -53,9 +53,6 @@ const GalleryContent = () => {
                     <p className="text-white/40 max-w-2xl mx-auto text-fluid-sm">
                         Relive the moments — from match days to community events.
                     </p>
-                    <div className="mt-2 text-fluid-xs text-white/20 uppercase tracking-[0.2em]">
-                        {galleryImages.length} Photos
-                    </div>
                 </div>
 
                 {/* Tight, uniform grid — no masonry gaps */}
@@ -91,7 +88,7 @@ const GalleryContent = () => {
                 {visibleCount < galleryImages.length && (
                     <div className="flex justify-center mt-10">
                         <button onClick={loadMore} className="btn-secondary">
-                            Load More ({galleryImages.length - visibleCount} remaining)
+                            View More
                         </button>
                     </div>
                 )}
@@ -119,8 +116,29 @@ const GalleryContent = () => {
                         <button className="absolute right-3 sm:right-6 z-[2010] p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors" onClick={(e) => { e.stopPropagation(); navigateImage('next'); }} aria-label="Next image">
                             <ChevronRight size={24} />
                         </button>
-                        <motion.div key={selectedImage.id} initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} transition={{ duration: 0.2 }} className="relative w-[90vw] h-[80vh] max-w-5xl" onClick={(e) => e.stopPropagation()}>
-                            <Image src={selectedImage.src} alt={selectedImage.alt} fill className="object-contain" sizes="90vw" priority />
+                        <motion.div 
+                            key={selectedImage.id} 
+                            initial={{ scale: 0.95, opacity: 0 }} 
+                            animate={{ scale: 1, opacity: 1 }} 
+                            exit={{ scale: 0.95, opacity: 0 }} 
+                            transition={{ duration: 0.2 }} 
+                            drag="x"
+                            dragConstraints={{ left: 0, right: 0 }}
+                            dragElastic={0.2}
+                            onDragEnd={(e, { offset, velocity }) => {
+                                const swipe = Math.abs(offset.x) > 50 || Math.abs(velocity.x) > 500;
+                                if (swipe) {
+                                    if (offset.x > 50) {
+                                        navigateImage('prev');
+                                    } else if (offset.x < -50) {
+                                        navigateImage('next');
+                                    }
+                                }
+                            }}
+                            className="relative w-[90vw] h-[80vh] max-w-5xl cursor-grab active:cursor-grabbing" 
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <Image src={selectedImage.src} alt={selectedImage.alt} fill className="object-contain pointer-events-none" sizes="90vw" priority />
                         </motion.div>
                         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 text-fluid-xs font-bold uppercase tracking-[0.2em]">
                             {selectedImage.id} / {galleryImages.length}

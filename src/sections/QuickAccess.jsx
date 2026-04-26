@@ -43,12 +43,12 @@ const QuickAccess = () => {
                                 {card.image ? (
                                     <>
                                         <Image src={card.image} alt={card.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/90 transition-all duration-500 p-6 sm:p-8 flex flex-col justify-end">
-                                            <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center mb-3 group-hover:bg-gold/30 transition-colors">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent group-hover:from-black/50 transition-all duration-500 p-6 sm:p-8 flex flex-col justify-end">
+                                            <div className="w-10 h-10 rounded-full bg-gold/30 flex items-center justify-center mb-3 group-hover:bg-gold/40 transition-colors shadow-lg">
                                                 <card.icon size={18} className="text-gold" />
                                             </div>
-                                            <h3 className="text-fluid-2xl font-black uppercase mb-1">{card.title}</h3>
-                                            <p className="text-white/60 text-fluid-sm">{card.desc}</p>
+                                            <h3 className="text-fluid-2xl font-black uppercase mb-1 drop-shadow-md">{card.title}</h3>
+                                            <p className="text-white/90 text-fluid-sm font-medium drop-shadow-sm">{card.desc}</p>
                                         </div>
                                     </>
                                 ) : (

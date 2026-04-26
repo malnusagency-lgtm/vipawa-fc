@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Ticket, Heart, Handshake, Check, Copy, Award, Star, Medal, Users } from 'lucide-react';
+import Image from 'next/image';
 
 const SupportContent = () => {
     const [activePlan, setActivePlan] = useState('fan');
@@ -110,10 +111,16 @@ const SupportContent = () => {
             <section id="sponsorship" className="section-padding scroll-mt-20 relative overflow-hidden" aria-labelledby="sponsor-heading">
                 {/* Fixed Background Layer */}
                 <div className="absolute inset-0 z-0 overflow-hidden" style={{ clipPath: 'inset(0 0 0 0)' }}>
-                    <div 
-                        className="fixed inset-0 w-full h-full bg-[url('/images/backgrounds/join%20us%20background%20image.jpeg')] bg-cover bg-center will-change-transform"
-                        style={{ transform: 'translateZ(0)' }}
-                    />
+                    <div className="fixed inset-0 w-full h-full will-change-transform" style={{ transform: 'translateZ(0)' }}>
+                        <Image 
+                            src="/images/backgrounds/join-us-background-image.jpeg" 
+                            alt="Join Us" 
+                            fill 
+                            className="object-cover" 
+                            sizes="100vw"
+                            quality={75}
+                        />
+                    </div>
                 </div>
                 <div className="absolute inset-0 bg-primary/90 z-[1]" />
 
